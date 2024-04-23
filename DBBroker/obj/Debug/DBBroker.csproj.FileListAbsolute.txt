@@ -1,0 +1,9 @@
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\bin\Debug\DBBroker.dll
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\bin\Debug\DBBroker.pdb
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\bin\Debug\Common.dll
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\bin\Debug\Common.pdb
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\obj\Debug\DBBroker.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\obj\Debug\DBBroker.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\obj\Debug\DBBroker.csproj.Up2Date
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\obj\Debug\DBBroker.dll
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\DBBroker\obj\Debug\DBBroker.pdb

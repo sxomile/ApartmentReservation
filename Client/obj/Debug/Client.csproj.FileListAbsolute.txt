@@ -1,0 +1,16 @@
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\bin\Debug\Client.exe.config
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\bin\Debug\Client.exe
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\bin\Debug\Client.pdb
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\bin\Debug\Common.dll
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\bin\Debug\Common.pdb
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Properties.Resources.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.csproj.GenerateResource.cache
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.exe
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.pdb
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Forms.FrmLogin.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.csproj.Up2Date
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Forms.FrmMain.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDomacinstvo.UCDomacinstvo.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDefault.resources
