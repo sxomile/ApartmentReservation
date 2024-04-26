@@ -24,11 +24,11 @@ namespace DBBroker
 
         public void Add(IEntity obj)
         {
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = $"insert into {obj.TableName} values {obj.Values}";
+            obj.PrepareCommand(cmd);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-
         }
         public List<IEntity> GetAll(IEntity entity)
         {
@@ -82,6 +82,32 @@ namespace DBBroker
                 reader.Close();
             }
             return null;
+        }
+
+        public bool DodajApartmane(Domacinstvo domacinstvo)
+        {
+            foreach (Apartman apartman in domacinstvo.Apartmani)
+            {
+                Add(apartman);
+            }
+
+            return true;
+
+        }
+
+        public int GetDomacinstvoId(Domacinstvo domacinstvo)
+        {
+            int id = 0;
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"insert into {domacinstvo.TableName} values {domacinstvo.Values} select scope_identity() as [scope]";
+            domacinstvo.PrepareCommand(cmd);
+            object result = cmd.ExecuteScalar();
+            if (result != null && result != DBNull.Value)
+            {
+                id = Convert.ToInt32(result); 
+            }
+            cmd.Dispose();
+            return id;
         }
     }
 }

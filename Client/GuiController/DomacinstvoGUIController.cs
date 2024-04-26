@@ -21,6 +21,10 @@ namespace Client.GuiController
             {
                 ucDomacinstvo.btnOtkazi.Click += (s, e) =>
                     MainCoordinator.Instance.ShowDefault();
+
+                ucDomacinstvo.btnDodaj.Click += (s, e) =>
+                    DodajDomacinstvo(ucDomacinstvo.txtNazivDomacinstva.Text, ucDomacinstvo.dgvApartmani);
+
             }
             else if (mode == UCMode.Update)
             {
@@ -30,7 +34,27 @@ namespace Client.GuiController
             ucDomacinstvo.dgvApartmani.ColumnCount = 1;
             ucDomacinstvo.dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
 
+            foreach (DataGridViewColumn column in ucDomacinstvo.dgvApartmani.Columns)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
             return ucDomacinstvo;
+
+        }
+
+        internal void DodajDomacinstvo(string naziv, DataGridView dgvApartmani)
+        {
+            bool domacinstvo = Communication.Instance.DodajDomacinstvo(naziv, dgvApartmani);
+
+            if(domacinstvo)
+            {
+                MessageBox.Show("Domacinstvo je uspesno dodato!");
+            }
+            else
+            {
+                MessageBox.Show("Doslo je do greske! Probaj ponovo!");
+            }
 
         }
 

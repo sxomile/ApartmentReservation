@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Client
 {
@@ -47,6 +48,47 @@ namespace Client
             sender.Send(req);
 
             return (User)((Response)receiver.Receive()).Result;
+        }
+
+        internal bool DodajDomacinstvo(string nazivDomacinstva, DataGridView dgvApartmani)
+        {
+            List<Apartman> apartmani = new List<Apartman>();    
+            foreach(DataGridViewRow row in dgvApartmani.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    Apartman apartman = new Apartman()
+                    {
+                        Naziv = row.Cells[0].Value.ToString(),
+                        ProsecnaOcena = 0,
+                    };
+
+                    apartmani.Add(apartman);
+                }
+            }
+
+            Domacinstvo domacinstvo = new Domacinstvo()
+            {
+                Naziv = nazivDomacinstva,
+                Apartmani = apartmani,
+                BrojApartmana = apartmani.Count(),
+            };
+
+            foreach(Apartman apt in domacinstvo.Apartmani)
+            {
+                apt.Domacinstvo = domacinstvo;
+            }
+
+            Request req = new Request()
+            {
+                Operation = Operation.DodajDomacinstvo,
+                Argument = domacinstvo,
+            };
+
+            sender.Send(req);
+
+            return (bool)((Response)receiver.Receive()).Result;
+
         }
     }
 }

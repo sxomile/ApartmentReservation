@@ -13,13 +13,21 @@ namespace Common.Domain
         public int DomacinstvoId { get; set; }
         public string Naziv { get; set; }
         public int BrojApartmana { get; set; }
+        public List<Apartman> Apartmani { get; set; } = null;
         public string TableName => "Domacinstvo";
 
-        public string Values => $"'{DomacinstvoId}', '{Naziv}', '{BrojApartmana}'";
+        public string Values => "(@Naziv, @BrojApartmana)";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             throw new NotImplementedException();
+        }
+
+        public void PrepareCommand(SqlCommand cmd)
+        {
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@Naziv", Naziv);
+            cmd.Parameters.AddWithValue("@BrojApartmana", BrojApartmana);
         }
     }
 }

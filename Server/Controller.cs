@@ -1,5 +1,6 @@
 ﻿using Common.Domain;
 using DBBroker;
+using Server.SystemOperation.SODomacinstvo;
 using Server.SystemOperation.SOLogin;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,18 @@ namespace Server
         private static Controller _instance;
         public static Controller Instance {  get { if (_instance == null) _instance = new Controller(); return _instance; } }
 
+        internal object DodajDomacinstvo(Domacinstvo domacinstvo)
+        {
+            DodajDomacinstvoSO dodajDomacinstvoSO = new DodajDomacinstvoSO(domacinstvo);
+            dodajDomacinstvoSO.ExecuteTemplate();
+            return dodajDomacinstvoSO.Result;
+        }
+
         internal object Login(User korisnik)
         {
             LoginSO loginSO = new LoginSO(korisnik);
             loginSO.ExecuteTemplate();
-            return loginSO.result;
+            return loginSO.Result;
         }
     }
 }

@@ -15,12 +15,19 @@ namespace Common.Domain
         public string Naziv { get; set; }
         public double? ProsecnaOcena { get; set; }
         public string TableName => "Apartman";
-
-        public string Values => $"'{Domacinstvo.DomacinstvoId}', '{ApartmanId}', '{Naziv}', '{ProsecnaOcena}'";
+        public string Values => "(@DomacinstvoID, @Naziv, @ProsecnaOcena)";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             throw new NotImplementedException();
+        }
+        public void PrepareCommand(SqlCommand cmd)
+        {
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@DomacinstvoID", Domacinstvo.DomacinstvoId);
+            cmd.Parameters.AddWithValue("@Naziv", Naziv);
+            cmd.Parameters.AddWithValue("@ProsecnaOcena", ProsecnaOcena);
+
         }
     }
 }

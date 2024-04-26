@@ -41,7 +41,14 @@ namespace Server
                 switch (req.Operation)
                 {
                     case Operation.Login:
+                        
                         res.Result = Controller.Instance.Login((User)req.Argument);
+
+                    break;
+
+                    case Operation.DodajDomacinstvo:
+
+                        res.Result = Controller.Instance.DodajDomacinstvo((Domacinstvo)req.Argument);
 
                     break;
                 }
