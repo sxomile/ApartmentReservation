@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,11 @@ namespace Common.Domain
             cmd.Parameters.AddWithValue("@Naziv", Naziv);
             cmd.Parameters.AddWithValue("@ProsecnaOcena", ProsecnaOcena);
 
+        }
+
+        BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
+        {
+            throw new NotImplementedException();
         }
     }
 }

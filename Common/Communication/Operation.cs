@@ -9,6 +9,7 @@ namespace Common.Communication
     public enum Operation
     {
         Login,
-        DodajDomacinstvo
+        DodajDomacinstvo,
+        GetAllDomacinstvo
     }
 }

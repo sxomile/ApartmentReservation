@@ -51,6 +51,12 @@ namespace Server
                         res.Result = Controller.Instance.DodajDomacinstvo((Domacinstvo)req.Argument);
 
                     break;
+
+                    case Operation.GetAllDomacinstvo:
+
+                        res.Result = Controller.Instance.GetAllDomacinstvo();
+
+                    break;
                 }
             } catch (Exception e)
             {

@@ -1,6 +1,6 @@
 ﻿namespace Client.UserControls.UCDomacinstvo
 {
-    partial class UCDomacinstvo
+    partial class UCUpsertDomacinstvo
     {
         /// <summary> 
         /// Required designer variable.

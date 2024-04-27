@@ -2,6 +2,7 @@
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -89,6 +90,17 @@ namespace Client
 
             return (bool)((Response)receiver.Receive()).Result;
 
+        }
+
+        internal BindingList<IEntity> GetAllDomacinstvo()
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.GetAllDomacinstvo,
+            };
+
+            sender.Send(req);   
+            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
         }
     }
 }

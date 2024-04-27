@@ -32,6 +32,7 @@
             this.domacinstvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kreirajDomacinstvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pretraziDomacinstvaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,8 @@
             // domacinstvoToolStripMenuItem
             // 
             this.domacinstvoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kreirajDomacinstvoToolStripMenuItem});
+            this.kreirajDomacinstvoToolStripMenuItem,
+            this.pretraziDomacinstvaToolStripMenuItem});
             this.domacinstvoToolStripMenuItem.Name = "domacinstvoToolStripMenuItem";
             this.domacinstvoToolStripMenuItem.Size = new System.Drawing.Size(110, 24);
             this.domacinstvoToolStripMenuItem.Text = "Domacinstvo";
@@ -57,7 +59,7 @@
             // kreirajDomacinstvoToolStripMenuItem
             // 
             this.kreirajDomacinstvoToolStripMenuItem.Name = "kreirajDomacinstvoToolStripMenuItem";
-            this.kreirajDomacinstvoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.kreirajDomacinstvoToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.kreirajDomacinstvoToolStripMenuItem.Text = "Kreiraj domacinstvo";
             // 
             // pnlMain
@@ -66,6 +68,12 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(775, 417);
             this.pnlMain.TabIndex = 1;
+            // 
+            // pretraziDomacinstvaToolStripMenuItem
+            // 
+            this.pretraziDomacinstvaToolStripMenuItem.Name = "pretraziDomacinstvaToolStripMenuItem";
+            this.pretraziDomacinstvaToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.pretraziDomacinstvaToolStripMenuItem.Text = "Pretrazi domacinstva";
             // 
             // FrmMain
             // 
@@ -90,5 +98,6 @@
         private System.Windows.Forms.ToolStripMenuItem domacinstvoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kreirajDomacinstvoToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.ToolStripMenuItem pretraziDomacinstvaToolStripMenuItem;
     }
 }

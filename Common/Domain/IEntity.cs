@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Common.Domain
     {
         string TableName {  get; }
         string Values {  get; }
-        List<IEntity> GetReaderList(SqlDataReader reader);
+        BindingList<IEntity> GetReaderList(SqlDataReader reader);
         void PrepareCommand(SqlCommand cmd);
     }
 }

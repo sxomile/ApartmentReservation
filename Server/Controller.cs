@@ -22,6 +22,13 @@ namespace Server
             return dodajDomacinstvoSO.Result;
         }
 
+        internal object GetAllDomacinstvo()
+        {
+            UcitajDomacinstvaSO ucitajDomacinstvaSO = new UcitajDomacinstvaSO();
+            ucitajDomacinstvaSO.ExecuteTemplate();
+            return ucitajDomacinstvaSO.Result;
+        }
+
         internal object Login(User korisnik)
         {
             LoginSO loginSO = new LoginSO(korisnik);

@@ -15,7 +15,7 @@ namespace Client.Forms
 {
     public partial class FrmMain : Form
     {
-        private Role uloga;
+        private readonly Role uloga;
         public FrmMain(Role uloga)
         {
             this.uloga = uloga;
@@ -32,7 +32,10 @@ namespace Client.Forms
             }
 
             kreirajDomacinstvoToolStripMenuItem.Click += (s, e) =>
-                MainCoordinator.Instance.ShowProdavacPanel(UCMode.Create);
+                MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Create);
+
+            pretraziDomacinstvaToolStripMenuItem.Click += (s, e) =>
+                MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
         }
 
         internal void ChanglePanel(Control control)

@@ -70,11 +70,17 @@
     <Compile Include="UserControls\UCDefault.Designer.cs">
       <DependentUpon>UCDefault.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UCDomacinstvo\UCDomacinstvo.cs">
+    <Compile Include="UserControls\UCDomacinstvo\UCUpsertDomacinstvo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UCDomacinstvo\UCDomacinstvo.Designer.cs">
-      <DependentUpon>UCDomacinstvo.cs</DependentUpon>
+    <Compile Include="UserControls\UCDomacinstvo\UCUpsertDomacinstvo.Designer.cs">
+      <DependentUpon>UCUpsertDomacinstvo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCDomacinstvo\UCPretraziDomacinstvo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCDomacinstvo\UCPretraziDomacinstvo.Designer.cs">
+      <DependentUpon>UCPretraziDomacinstvo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCMode.cs" />
     <EmbeddedResource Include="Forms\FrmLogin.resx">
@@ -96,8 +102,11 @@
     <EmbeddedResource Include="UserControls\UCDefault.resx">
       <DependentUpon>UCDefault.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UCDomacinstvo\UCDomacinstvo.resx">
-      <DependentUpon>UCDomacinstvo.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UCDomacinstvo\UCUpsertDomacinstvo.resx">
+      <DependentUpon>UCUpsertDomacinstvo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCDomacinstvo\UCPretraziDomacinstvo.resx">
+      <DependentUpon>UCPretraziDomacinstvo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

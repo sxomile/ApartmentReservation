@@ -3,6 +3,7 @@ using Client.UserControls.UCDomacinstvo;
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,36 +13,60 @@ namespace Client.GuiController
 {
     internal class DomacinstvoGUIController
     {
-        private UCDomacinstvo ucDomacinstvo;
+        private BindingList<Domacinstvo> domacinstva = new BindingList<Domacinstvo>();
+        private UserControl ucDomacinstvo;
         internal Control CreateUCProdavac(UCMode mode, Domacinstvo domacinstvo)
         {
-            ucDomacinstvo = new UCDomacinstvo();
 
             if (mode == UCMode.Create)
             {
-                ucDomacinstvo.btnOtkazi.Click += (s, e) =>
+                ucDomacinstvo = new UCUpsertDomacinstvo();
+                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ColumnCount = 1;
+                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
+
+                foreach (DataGridViewColumn column in ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns)
+                {
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+
+                ((UCUpsertDomacinstvo)ucDomacinstvo).btnOtkazi.Click += (s, e) =>
                     MainCoordinator.Instance.ShowDefault();
 
-                ucDomacinstvo.btnDodaj.Click += (s, e) =>
-                    DodajDomacinstvo(ucDomacinstvo.txtNazivDomacinstva.Text, ucDomacinstvo.dgvApartmani);
+                ((UCUpsertDomacinstvo)ucDomacinstvo).btnDodaj.Click += (s, e) =>
+                    DodajDomacinstvo(((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text, ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani);
 
             }
-            else if (mode == UCMode.Update)
+            else if (mode == UCMode.Search)
             {
-                //Azuriraj korisnika uc
-            }
+                domacinstva.Clear();
+                ucDomacinstvo = new UCPretraziDomacinstvo();
+                BindingList<IEntity> doms = Communication.Instance.GetAllDomacinstvo();
+                foreach(IEntity entity in doms)
+                {
+                    Domacinstvo dom = (Domacinstvo)entity;
+                    domacinstva.Add(dom);
+                }
 
-            ucDomacinstvo.dgvApartmani.ColumnCount = 1;
-            ucDomacinstvo.dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
+                doms.Clear();
 
-            foreach (DataGridViewColumn column in ucDomacinstvo.dgvApartmani.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.DataSource = domacinstva;
+                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["DomacinstvoId"].Visible = false;
+                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["TableName"].Visible = false;
+                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["Values"].Visible = false;
+
+                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Dock = DockStyle.Fill;
+
+                foreach (DataGridViewColumn column in ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns)
+                {
+                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+
             }
 
             return ucDomacinstvo;
 
         }
+
 
         internal void DodajDomacinstvo(string naziv, DataGridView dgvApartmani)
         {

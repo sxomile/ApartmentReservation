@@ -12,5 +12,6 @@ C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.pdb
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Forms.FrmLogin.resources
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.csproj.Up2Date
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Forms.FrmMain.resources
-C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDomacinstvo.UCDomacinstvo.resources
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDefault.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDomacinstvo.UCUpsertDomacinstvo.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDomacinstvo.UCPretraziDomacinstvo.resources

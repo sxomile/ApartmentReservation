@@ -1,6 +1,7 @@
 ﻿using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -30,12 +31,12 @@ namespace DBBroker
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
-        public List<IEntity> GetAll(IEntity entity)
+        public BindingList<IEntity> GetAll(IEntity entity)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText = $"select * from {entity.TableName}";
             SqlDataReader reader = command.ExecuteReader();
-            List<IEntity> list = entity.GetReaderList(reader);
+            BindingList<IEntity> list = entity.GetReaderList(reader);
             command.Dispose();
             return list;
         }

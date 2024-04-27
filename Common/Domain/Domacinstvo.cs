@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,25 @@ namespace Common.Domain
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@Naziv", Naziv);
             cmd.Parameters.AddWithValue("@BrojApartmana", BrojApartmana);
+        }
+
+        BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
+        {
+            BindingList<IEntity> domacinstva = new BindingList<IEntity>();
+            while(reader.Read())
+            {
+                IEntity domacinstvo = new Domacinstvo()
+                {
+                    Naziv = (string)reader["Naziv"],
+                    BrojApartmana = (int)reader["BrojApartmana"]
+                };
+
+                domacinstva.Add(domacinstvo);
+            }
+
+            reader.Close();
+
+            return domacinstva;
         }
     }
 }

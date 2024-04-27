@@ -39,7 +39,7 @@ namespace Client.GuiController
             frmMain.ShowDialog();
         }
 
-        internal void ShowProdavacPanel(UCMode mode, Domacinstvo domacinstvo = null)
+        internal void ShowDomacinstvoPanel(UCMode mode, Domacinstvo domacinstvo = null)
         {
             frmMain.ChanglePanel(domacinstvoGUIController.CreateUCProdavac(mode, domacinstvo));
         }

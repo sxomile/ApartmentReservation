@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Client.UserControls.UCDomacinstvo
 {
-    public partial class UCDomacinstvo : UserControl
+    public partial class UCPretraziDomacinstvo : UserControl
     {
-        public UCDomacinstvo()
+        public UCPretraziDomacinstvo()
         {
             InitializeComponent();
         }
