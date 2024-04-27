@@ -10,6 +10,7 @@ namespace Common.Communication
     {
         Login,
         DodajDomacinstvo,
-        GetAllDomacinstvo
+        GetAllDomacinstvo,
+        PretraziDomacinstva
     }
 }

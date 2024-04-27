@@ -41,6 +41,7 @@ namespace Client.GuiController
                 domacinstva.Clear();
                 ucDomacinstvo = new UCPretraziDomacinstvo();
                 BindingList<IEntity> doms = Communication.Instance.GetAllDomacinstvo();
+
                 foreach(IEntity entity in doms)
                 {
                     Domacinstvo dom = (Domacinstvo)entity;
@@ -61,12 +62,20 @@ namespace Client.GuiController
                     column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
 
+                ((UCPretraziDomacinstvo)ucDomacinstvo).btnPretrazi.Click += (s, e) =>
+                    PretraziDomacinstvo(((UCPretraziDomacinstvo)ucDomacinstvo).txtUpit.Text);
+
             }
 
             return ucDomacinstvo;
 
         }
 
+        private void PretraziDomacinstvo(string upit)
+        {
+            domacinstva = Communication.Instance.PretraziDomacinstva(upit);
+            ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.DataSource = domacinstva;
+        }
 
         internal void DodajDomacinstvo(string naziv, DataGridView dgvApartmani)
         {

@@ -110,5 +110,27 @@ namespace DBBroker
             cmd.Dispose();
             return id;
         }
+
+        public BindingList<Domacinstvo> PretraziDomacinstvo(string upit)
+        {
+            BindingList<Domacinstvo> domacinstva = new BindingList<Domacinstvo>();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"select * from domacinstvo where naziv like '%{upit}%'";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                Domacinstvo domacinstvo = new Domacinstvo()
+                {
+                    Naziv = (string)reader["Naziv"],
+                    BrojApartmana = (int)reader["BrojApartmana"]
+                };
+
+                domacinstva.Add(domacinstvo);
+            }
+
+            reader.Close();
+
+            return domacinstva;
+        }
     }
 }

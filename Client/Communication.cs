@@ -102,5 +102,17 @@ namespace Client
             sender.Send(req);   
             return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
         }
+
+        internal BindingList<Domacinstvo> PretraziDomacinstva(string upit)
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.PretraziDomacinstva,
+                Argument = upit,
+            };
+
+            sender.Send(req);
+            return (BindingList<Domacinstvo>)((Response)receiver.Receive()).Result;
+        }
     }
 }

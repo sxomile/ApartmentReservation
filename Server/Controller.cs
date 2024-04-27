@@ -35,5 +35,12 @@ namespace Server
             loginSO.ExecuteTemplate();
             return loginSO.Result;
         }
+
+        internal object PretraziDomacinstva(string argument)
+        {
+            PretraziDomacinstvaSO pretraziDomacinstvaSO = new PretraziDomacinstvaSO(argument);
+            pretraziDomacinstvaSO.ExecuteTemplate();
+            return pretraziDomacinstvaSO.Result;
+        }
     }
 }
