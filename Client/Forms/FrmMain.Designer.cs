@@ -31,8 +31,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.domacinstvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kreirajDomacinstvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.pretraziDomacinstvaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.apartmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretraziApartmaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,7 +42,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.domacinstvoToolStripMenuItem});
+            this.domacinstvoToolStripMenuItem,
+            this.apartmanToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -62,6 +65,12 @@
             this.kreirajDomacinstvoToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.kreirajDomacinstvoToolStripMenuItem.Text = "Kreiraj domacinstvo";
             // 
+            // pretraziDomacinstvaToolStripMenuItem
+            // 
+            this.pretraziDomacinstvaToolStripMenuItem.Name = "pretraziDomacinstvaToolStripMenuItem";
+            this.pretraziDomacinstvaToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.pretraziDomacinstvaToolStripMenuItem.Text = "Pretrazi domacinstva";
+            // 
             // pnlMain
             // 
             this.pnlMain.Location = new System.Drawing.Point(13, 32);
@@ -69,11 +78,19 @@
             this.pnlMain.Size = new System.Drawing.Size(775, 417);
             this.pnlMain.TabIndex = 1;
             // 
-            // pretraziDomacinstvaToolStripMenuItem
+            // apartmanToolStripMenuItem
             // 
-            this.pretraziDomacinstvaToolStripMenuItem.Name = "pretraziDomacinstvaToolStripMenuItem";
-            this.pretraziDomacinstvaToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
-            this.pretraziDomacinstvaToolStripMenuItem.Text = "Pretrazi domacinstva";
+            this.apartmanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pretraziApartmaneToolStripMenuItem});
+            this.apartmanToolStripMenuItem.Name = "apartmanToolStripMenuItem";
+            this.apartmanToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.apartmanToolStripMenuItem.Text = "Apartman";
+            // 
+            // pretraziApartmaneToolStripMenuItem
+            // 
+            this.pretraziApartmaneToolStripMenuItem.Name = "pretraziApartmaneToolStripMenuItem";
+            this.pretraziApartmaneToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pretraziApartmaneToolStripMenuItem.Text = "Pretrazi apartmane";
             // 
             // FrmMain
             // 
@@ -99,5 +116,7 @@
         private System.Windows.Forms.ToolStripMenuItem kreirajDomacinstvoToolStripMenuItem;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.ToolStripMenuItem pretraziDomacinstvaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem apartmanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretraziApartmaneToolStripMenuItem;
     }
 }

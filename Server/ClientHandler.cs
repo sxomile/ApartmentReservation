@@ -63,6 +63,19 @@ namespace Server
                         res.Result = Controller.Instance.PretraziDomacinstva((string)req.Argument);
 
                     break;
+
+                    case Operation.GetAllApartman:
+
+                        res.Result = Controller.Instance.GetAllApartman();
+
+                    break;
+
+                    case Operation.PretraziApartmane:
+
+                        res.Result = Controller.Instance.PretraziApartmane((string)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

@@ -58,6 +58,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />
+    <Compile Include="SystemOperation\SOApartman\PretraziApartmaneSO.cs" />
+    <Compile Include="SystemOperation\SOApartman\UcitajApartmaneSO.cs" />
     <Compile Include="SystemOperation\SODomacinstvo\DodajDomacinstvoSO.cs" />
     <Compile Include="SystemOperation\SODomacinstvo\PretraziDomacinstvaSO.cs" />
     <Compile Include="SystemOperation\SODomacinstvo\UcitajDomacinstvaSO.cs" />

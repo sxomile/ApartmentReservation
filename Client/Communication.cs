@@ -114,5 +114,27 @@ namespace Client
             sender.Send(req);
             return (BindingList<Domacinstvo>)((Response)receiver.Receive()).Result;
         }
+
+        internal BindingList<IEntity> GetAllApartman()
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.GetAllApartman
+            };
+            sender.Send(req);
+            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;   
+        }
+
+        internal BindingList<Apartman> PretraziApartmane(string upit)
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.PretraziApartmane,
+                Argument = upit,
+            };
+
+            sender.Send(req);
+            return (BindingList<Apartman>)((Response)receiver.Receive()).Result;
+        }
     }
 }

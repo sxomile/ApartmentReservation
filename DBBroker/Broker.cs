@@ -132,5 +132,27 @@ namespace DBBroker
 
             return domacinstva;
         }
+
+        public BindingList<Apartman> PretraziApartmane(string upit)
+        {
+            BindingList<Apartman> apartmani = new BindingList<Apartman>();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"select * from apartman where naziv like '%{upit}%'";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Apartman apartman = new Apartman()
+                {
+                    Naziv = (string)reader["Naziv"],
+                    ProsecnaOcena = (double)reader["ProsecnaOcena"]
+                };
+
+                apartmani.Add(apartman);
+            }
+
+            reader.Close();
+
+            return apartmani;
+        }
     }
 }

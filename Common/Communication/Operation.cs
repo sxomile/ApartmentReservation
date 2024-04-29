@@ -11,6 +11,8 @@ namespace Common.Communication
         Login,
         DodajDomacinstvo,
         GetAllDomacinstvo,
-        PretraziDomacinstva
+        PretraziDomacinstva,
+        GetAllApartman,
+        PretraziApartmane
     }
 }

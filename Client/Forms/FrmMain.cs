@@ -23,6 +23,7 @@ namespace Client.Forms
 
             if(uloga == Role.Gost)
             {
+
                 domacinstvoToolStripMenuItem.Visible = false;
 
             }
@@ -36,6 +37,9 @@ namespace Client.Forms
 
             pretraziDomacinstvaToolStripMenuItem.Click += (s, e) =>
                 MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
+
+            pretraziApartmaneToolStripMenuItem.Click += (s, e) =>
+                MainCoordinator.Instance.ShowApartmanPanel();
         }
 
         internal void ChanglePanel(Control control)

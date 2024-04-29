@@ -15,7 +15,7 @@ namespace Client.GuiController
     {
         private BindingList<Domacinstvo> domacinstva = new BindingList<Domacinstvo>();
         private UserControl ucDomacinstvo;
-        internal Control CreateUCProdavac(UCMode mode, Domacinstvo domacinstvo)
+        internal Control CreateUCDomacinstvo(UCMode mode, Domacinstvo domacinstvo)
         {
 
             if (mode == UCMode.Create)

@@ -1,5 +1,6 @@
 ﻿using Common.Domain;
 using DBBroker;
+using Server.SystemOperation.SOApartman;
 using Server.SystemOperation.SODomacinstvo;
 using Server.SystemOperation.SOLogin;
 using System;
@@ -22,6 +23,13 @@ namespace Server
             return dodajDomacinstvoSO.Result;
         }
 
+        internal object GetAllApartman()
+        {
+            UcitajApartmaneSO ucitajApartmaneSO = new UcitajApartmaneSO();
+            ucitajApartmaneSO.ExecuteTemplate();
+            return ucitajApartmaneSO.Result;
+        }
+
         internal object GetAllDomacinstvo()
         {
             UcitajDomacinstvaSO ucitajDomacinstvaSO = new UcitajDomacinstvaSO();
@@ -34,6 +42,13 @@ namespace Server
             LoginSO loginSO = new LoginSO(korisnik);
             loginSO.ExecuteTemplate();
             return loginSO.Result;
+        }
+
+        internal object PretraziApartmane(string argument)
+        {
+            PretraziApartmaneSO pretraziApartmaneSO = new PretraziApartmaneSO(argument);
+            pretraziApartmaneSO.ExecuteTemplate();
+            return pretraziApartmaneSO.Result;
         }
 
         internal object PretraziDomacinstva(string argument)

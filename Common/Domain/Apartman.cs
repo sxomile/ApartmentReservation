@@ -17,11 +17,6 @@ namespace Common.Domain
         public double? ProsecnaOcena { get; set; }
         public string TableName => "Apartman";
         public string Values => "(@DomacinstvoID, @Naziv, @ProsecnaOcena)";
-
-        public List<IEntity> GetReaderList(SqlDataReader reader)
-        {
-            throw new NotImplementedException();
-        }
         public void PrepareCommand(SqlCommand cmd)
         {
             cmd.Parameters.Clear();
@@ -33,7 +28,21 @@ namespace Common.Domain
 
         BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            BindingList<IEntity> apartmani = new BindingList<IEntity>();
+            while (reader.Read())
+            {
+                IEntity apartman = new Apartman()
+                {
+                    Naziv = (string)reader["Naziv"],
+                    ProsecnaOcena = (double)reader["ProsecnaOcena"]
+                };
+
+                apartmani.Add(apartman);
+            }
+
+            reader.Close();
+
+            return apartmani;
         }
     }
 }
