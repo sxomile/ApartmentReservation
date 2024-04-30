@@ -29,15 +29,18 @@ namespace Client.GuiController
             //instancirati sve GUI kontrolere osim logina
             domacinstvoGUIController = new DomacinstvoGUIController();
             apartmanGuiController = new ApartmanGuiController();
+            rezervacijaGuiController = new RezervacijaGuiController();
+            
         }
 
         private FrmMain frmMain;
         private DomacinstvoGUIController domacinstvoGUIController;
         private ApartmanGuiController apartmanGuiController;
+        private RezervacijaGuiController rezervacijaGuiController;
 
-        internal void ShowFrmMain(Role uloga)
+        internal void ShowFrmMain(User korisnik)
         {
-            frmMain = new FrmMain(uloga);
+            frmMain = new FrmMain(korisnik);
             frmMain.ShowDialog();
         }
 
@@ -52,9 +55,14 @@ namespace Client.GuiController
             frmMain.ChanglePanel(ucDefault);
         }
 
-        internal void ShowApartmanPanel()
+        internal void ShowApartmanPanel(User korisnik)
         {
-            frmMain.ChanglePanel(apartmanGuiController.CreateUCApartman());
+            frmMain.ChanglePanel(apartmanGuiController.CreateUCApartman(korisnik));
+        }
+
+        internal void ShowUCRezervacija(UCMode mode, Apartman apartman, User korisnik)
+        {
+            frmMain.ChanglePanel(rezervacijaGuiController.CreateUCRezervacija(mode, apartman, korisnik));
         }
     }
 }

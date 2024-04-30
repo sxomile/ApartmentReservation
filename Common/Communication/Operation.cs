@@ -13,6 +13,7 @@ namespace Common.Communication
         GetAllDomacinstvo,
         PretraziDomacinstva,
         GetAllApartman,
-        PretraziApartmane
+        PretraziApartmane,
+        GetEntityById
     }
 }

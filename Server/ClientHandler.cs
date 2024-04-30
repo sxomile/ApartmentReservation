@@ -76,6 +76,12 @@ namespace Server
 
                     break;
 
+                    case Operation.GetEntityById:
+
+                        res.Result = Controller.Instance.GetEntityById((IEntity)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

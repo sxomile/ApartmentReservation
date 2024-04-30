@@ -122,7 +122,7 @@ namespace DBBroker
                 Domacinstvo domacinstvo = new Domacinstvo()
                 {
                     Naziv = (string)reader["Naziv"],
-                    BrojApartmana = (int)reader["BrojApartmana"]
+                    BrojApartmana = (int)reader["BrojApartmana"],
                 };
 
                 domacinstva.Add(domacinstvo);
@@ -144,7 +144,9 @@ namespace DBBroker
                 Apartman apartman = new Apartman()
                 {
                     Naziv = (string)reader["Naziv"],
-                    ProsecnaOcena = (double)reader["ProsecnaOcena"]
+                    ProsecnaOcena = (double)reader["ProsecnaOcena"],
+                    DomacinstvoId = (int)reader["DomacinstvoID"],
+                    ApartmanId = (int)reader["ApartmanID"]
                 };
 
                 apartmani.Add(apartman);
@@ -153,6 +155,15 @@ namespace DBBroker
             reader.Close();
 
             return apartmani;
+        }
+
+        public IEntity GetEntityById(IEntity obj)
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = $"select top 1 * from {obj.TableName} where {obj.GetIdQuery()}";
+            SqlDataReader reader = command.ExecuteReader();
+            obj.SetValues((Domacinstvo)obj, reader);
+            return obj;
         }
     }
 }

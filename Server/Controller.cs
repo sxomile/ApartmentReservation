@@ -2,6 +2,7 @@
 using DBBroker;
 using Server.SystemOperation.SOApartman;
 using Server.SystemOperation.SODomacinstvo;
+using Server.SystemOperation.SOEntity;
 using Server.SystemOperation.SOLogin;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,13 @@ namespace Server
             UcitajDomacinstvaSO ucitajDomacinstvaSO = new UcitajDomacinstvaSO();
             ucitajDomacinstvaSO.ExecuteTemplate();
             return ucitajDomacinstvaSO.Result;
+        }
+
+        internal IEntity GetEntityById(IEntity argument)
+        {
+            GetEntityByIdSO getEntityByIdSO = new GetEntityByIdSO(argument);
+            getEntityByIdSO.ExecuteTemplate();
+            return getEntityByIdSO.Result;
         }
 
         internal object Login(User korisnik)

@@ -15,13 +15,13 @@ namespace Client.Forms
 {
     public partial class FrmMain : Form
     {
-        private readonly Role uloga;
-        public FrmMain(Role uloga)
+        private readonly User korisnik;
+        public FrmMain(User korisnik)
         {
-            this.uloga = uloga;
+            this.korisnik = korisnik;
             InitializeComponent();
 
-            if(uloga == Role.Gost)
+            if(korisnik.Uloga == Role.Gost)
             {
 
                 domacinstvoToolStripMenuItem.Visible = false;
@@ -39,7 +39,7 @@ namespace Client.Forms
                 MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
 
             pretraziApartmaneToolStripMenuItem.Click += (s, e) =>
-                MainCoordinator.Instance.ShowApartmanPanel();
+                MainCoordinator.Instance.ShowApartmanPanel(korisnik);
         }
 
         internal void ChanglePanel(Control control)

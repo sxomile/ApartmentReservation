@@ -63,6 +63,7 @@
     <Compile Include="SystemOperation\SODomacinstvo\DodajDomacinstvoSO.cs" />
     <Compile Include="SystemOperation\SODomacinstvo\PretraziDomacinstvaSO.cs" />
     <Compile Include="SystemOperation\SODomacinstvo\UcitajDomacinstvaSO.cs" />
+    <Compile Include="SystemOperation\SOEntity\GetEntityByIdSO.cs" />
     <Compile Include="SystemOperation\SOLogin\LoginSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
     <EmbeddedResource Include="FrmServer.resx">

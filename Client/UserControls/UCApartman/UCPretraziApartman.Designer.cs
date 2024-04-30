@@ -33,6 +33,7 @@
             this.btnPretrazi = new System.Windows.Forms.Button();
             this.dgvApartmani = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRezervisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -57,12 +58,14 @@
             // dgvApartmani
             // 
             this.dgvApartmani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApartmani.Enabled = false;
-            this.dgvApartmani.Location = new System.Drawing.Point(3, 3);
+            this.dgvApartmani.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvApartmani.Location = new System.Drawing.Point(0, 0);
+            this.dgvApartmani.MultiSelect = false;
             this.dgvApartmani.Name = "dgvApartmani";
+            this.dgvApartmani.ReadOnly = true;
             this.dgvApartmani.RowHeadersWidth = 51;
             this.dgvApartmani.RowTemplate.Height = 24;
-            this.dgvApartmani.Size = new System.Drawing.Size(409, 277);
+            this.dgvApartmani.Size = new System.Drawing.Size(415, 283);
             this.dgvApartmani.TabIndex = 3;
             this.dgvApartmani.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApartmani_CellContentClick);
             // 
@@ -74,15 +77,26 @@
             this.panel1.Size = new System.Drawing.Size(415, 283);
             this.panel1.TabIndex = 4;
             // 
+            // btnRezervisi
+            // 
+            this.btnRezervisi.Location = new System.Drawing.Point(476, 214);
+            this.btnRezervisi.Name = "btnRezervisi";
+            this.btnRezervisi.Size = new System.Drawing.Size(96, 51);
+            this.btnRezervisi.TabIndex = 5;
+            this.btnRezervisi.Text = "Rezervisi";
+            this.btnRezervisi.UseVisualStyleBackColor = true;
+            this.btnRezervisi.Click += new System.EventHandler(this.btnRezervisi_Click);
+            // 
             // ucPretraziApartman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRezervisi);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPretrazi);
             this.Controls.Add(this.txtUpit);
             this.Name = "ucPretraziApartman";
-            this.Size = new System.Drawing.Size(477, 401);
+            this.Size = new System.Drawing.Size(611, 401);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -96,5 +110,6 @@
         public System.Windows.Forms.Button btnPretrazi;
         public System.Windows.Forms.DataGridView dgvApartmani;
         private System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button btnRezervisi;
     }
 }

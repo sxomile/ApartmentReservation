@@ -13,10 +13,17 @@ namespace Common.Domain
     {
         public int ApartmanId { get; set; }
         public Domacinstvo Domacinstvo { get; set; }
+        public int DomacinstvoId {  get; set; }
         public string Naziv { get; set; }
         public double? ProsecnaOcena { get; set; }
         public string TableName => "Apartman";
         public string Values => "(@DomacinstvoID, @Naziv, @ProsecnaOcena)";
+
+        public string GetIdQuery()
+        {
+            throw new NotImplementedException();
+        }
+
         public void PrepareCommand(SqlCommand cmd)
         {
             cmd.Parameters.Clear();
@@ -24,6 +31,11 @@ namespace Common.Domain
             cmd.Parameters.AddWithValue("@Naziv", Naziv);
             cmd.Parameters.AddWithValue("@ProsecnaOcena", ProsecnaOcena);
 
+        }
+
+        public void SetValues(IEntity entity, SqlDataReader reader)
+        {
+            throw new NotImplementedException();
         }
 
         BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
@@ -34,7 +46,9 @@ namespace Common.Domain
                 IEntity apartman = new Apartman()
                 {
                     Naziv = (string)reader["Naziv"],
-                    ProsecnaOcena = (double)reader["ProsecnaOcena"]
+                    ProsecnaOcena = (double)reader["ProsecnaOcena"],
+                    DomacinstvoId = (int)reader["DomacinstvoID"],
+                    ApartmanId = (int)reader["ApartmanID"]
                 };
 
                 apartmani.Add(apartman);

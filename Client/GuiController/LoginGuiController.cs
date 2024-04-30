@@ -40,7 +40,7 @@ namespace Client.GuiController
             if(korisnik != null)
             {
                 frmLogin.Hide();
-                MainCoordinator.Instance.ShowFrmMain(korisnik.Uloga);
+                MainCoordinator.Instance.ShowFrmMain(korisnik);
                 frmLogin.Close();
             }
             else

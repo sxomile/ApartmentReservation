@@ -57,9 +57,10 @@
             // dgvDomacinstva
             // 
             this.dgvDomacinstva.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDomacinstva.Enabled = false;
             this.dgvDomacinstva.Location = new System.Drawing.Point(0, 3);
+            this.dgvDomacinstva.MultiSelect = false;
             this.dgvDomacinstva.Name = "dgvDomacinstva";
+            this.dgvDomacinstva.ReadOnly = true;
             this.dgvDomacinstva.RowHeadersWidth = 51;
             this.dgvDomacinstva.RowTemplate.Height = 24;
             this.dgvDomacinstva.Size = new System.Drawing.Size(415, 290);

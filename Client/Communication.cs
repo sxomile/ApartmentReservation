@@ -136,5 +136,16 @@ namespace Client
             sender.Send(req);
             return (BindingList<Apartman>)((Response)receiver.Receive()).Result;
         }
+
+        internal IEntity GetEntityById(object obj)
+        {
+            Request request = new Request()
+            {
+                Operation = Operation.GetEntityById,
+                Argument = obj
+            };
+            sender.Send(request);
+            return (Domacinstvo)((Response)receiver.Receive()).Result;
+        }
     }
 }

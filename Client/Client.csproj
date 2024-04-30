@@ -63,6 +63,7 @@
     <Compile Include="GuiController\DomacinstvoGUIController.cs" />
     <Compile Include="GuiController\LoginGuiController.cs" />
     <Compile Include="GuiController\MainCoordinator.cs" />
+    <Compile Include="GuiController\RezervacijaGuiController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControls\UCApartman\UCPretraziApartman.cs">
@@ -90,6 +91,12 @@
       <DependentUpon>UCPretraziDomacinstvo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCMode.cs" />
+    <Compile Include="UserControls\UCRezervacija\UCKreirajRezervaciju.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCKreirajRezervaciju.Designer.cs">
+      <DependentUpon>UCKreirajRezervaciju.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCDomacinstvo\UCPretraziDomacinstvo.resx">
       <DependentUpon>UCPretraziDomacinstvo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCRezervacija\UCKreirajRezervaciju.resx">
+      <DependentUpon>UCKreirajRezervaciju.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

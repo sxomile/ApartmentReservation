@@ -19,6 +19,11 @@ namespace Common.Domain
 
         public string Values => "(@Naziv, @BrojApartmana)";
 
+        public string GetIdQuery()
+        {
+            return $"DomacinstvoId = {DomacinstvoId}";
+        }
+
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             throw new NotImplementedException();
@@ -31,6 +36,17 @@ namespace Common.Domain
             cmd.Parameters.AddWithValue("@BrojApartmana", BrojApartmana);
         }
 
+        public void SetValues(IEntity dom, SqlDataReader reader)
+        {
+            if (reader.Read())
+            {
+                ((Domacinstvo)dom).DomacinstvoId = (int)reader["DomacinstvoID"];
+                ((Domacinstvo)dom).Naziv = (string)reader["Naziv"];
+                ((Domacinstvo)dom).BrojApartmana = (int)reader["BrojApartmana"];
+            }
+            reader.Close();
+        }
+
         BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
         {
             BindingList<IEntity> domacinstva = new BindingList<IEntity>();
@@ -38,6 +54,7 @@ namespace Common.Domain
             {
                 IEntity domacinstvo = new Domacinstvo()
                 {
+                    DomacinstvoId = (int)reader["DomacinstvoID"],
                     Naziv = (string)reader["Naziv"],
                     BrojApartmana = (int)reader["BrojApartmana"]
                 };
