@@ -165,5 +165,25 @@ namespace DBBroker
             obj.SetValues((Domacinstvo)obj, reader);
             return obj;
         }
+
+        public bool ProveriRezervaciju(Rezervacija data)
+        {
+            List<IEntity> rezs = new List<IEntity>(GetAll(data));
+            List<Rezervacija> rezervacije = new List<Rezervacija>();
+
+            foreach(IEntity ent in rezs)
+            {
+                Rezervacija rez = (Rezervacija)ent;
+                rezervacije.Add(rez);
+            }
+
+            foreach(Rezervacija rezervacija in rezervacije)
+            {
+                if (rezervacija.DatumOd < data.DatumDo && data.DatumOd < rezervacija.DatumDo)
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

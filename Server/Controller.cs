@@ -4,6 +4,7 @@ using Server.SystemOperation.SOApartman;
 using Server.SystemOperation.SODomacinstvo;
 using Server.SystemOperation.SOEntity;
 using Server.SystemOperation.SOLogin;
+using Server.SystemOperation.SORezervacija;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,13 @@ namespace Server
             GetEntityByIdSO getEntityByIdSO = new GetEntityByIdSO(argument);
             getEntityByIdSO.ExecuteTemplate();
             return getEntityByIdSO.Result;
+        }
+
+        internal object KreirajRezervaciju(Rezervacija argument)
+        {
+            KreirajRezervacijuSO kreirajRezervacijuSO = new KreirajRezervacijuSO(argument);
+            kreirajRezervacijuSO.ExecuteTemplate();
+            return kreirajRezervacijuSO.Result;
         }
 
         internal object Login(User korisnik)

@@ -147,5 +147,16 @@ namespace Client
             sender.Send(request);
             return (Domacinstvo)((Response)receiver.Receive()).Result;
         }
+
+        internal bool KreirajRezervaciju(Rezervacija rezervacija)
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.KreirajRezervaciju,
+                Argument = rezervacija,
+            };
+            sender.Send(req);
+            return (bool)((Response)receiver.Receive()).Result;
+        }
     }
 }

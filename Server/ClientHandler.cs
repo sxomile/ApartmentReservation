@@ -82,6 +82,12 @@ namespace Server
 
                     break;
 
+                    case Operation.KreirajRezervaciju:
+
+                        res.Result = Controller.Instance.KreirajRezervaciju((Rezervacija)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {
