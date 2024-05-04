@@ -3,6 +3,7 @@ using DBBroker;
 using Server.SystemOperation.SOApartman;
 using Server.SystemOperation.SODomacinstvo;
 using Server.SystemOperation.SOEntity;
+using Server.SystemOperation.SOGost;
 using Server.SystemOperation.SOLogin;
 using Server.SystemOperation.SORezervacija;
 using System;
@@ -39,6 +40,20 @@ namespace Server
             return ucitajDomacinstvaSO.Result;
         }
 
+        internal object GetAllGosti()
+        {
+            UcitajGosteSO ucitajGosteSO = new UcitajGosteSO();
+            ucitajGosteSO.ExecuteTemplate();
+            return ucitajGosteSO.Result;
+        }
+
+        internal object GetAllRezervacije()
+        {
+            UcitajRezervacijeSO ucitajRezervacijeSO = new UcitajRezervacijeSO();
+            ucitajRezervacijeSO.ExecuteTemplate();
+            return ucitajRezervacijeSO.Result;
+        }
+
         internal IEntity GetEntityById(IEntity argument)
         {
             GetEntityByIdSO getEntityByIdSO = new GetEntityByIdSO(argument);
@@ -72,6 +87,20 @@ namespace Server
             PretraziDomacinstvaSO pretraziDomacinstvaSO = new PretraziDomacinstvaSO(argument);
             pretraziDomacinstvaSO.ExecuteTemplate();
             return pretraziDomacinstvaSO.Result;
+        }
+
+        internal object PretraziGoste(string upit)
+        {
+            PretraziGosteSO pretraziGosteSO = new PretraziGosteSO(upit);
+            pretraziGosteSO.ExecuteTemplate();
+            return pretraziGosteSO.Result;
+        }
+
+        internal object PretraziRezervacije(string upit)
+        {
+            PretraziRezervacijeSO pretraziRezervacijeSO = new PretraziRezervacijeSO(upit);
+            pretraziRezervacijeSO.ExecuteTemplate();
+            return pretraziRezervacijeSO.Result;
         }
     }
 }

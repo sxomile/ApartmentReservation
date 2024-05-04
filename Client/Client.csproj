@@ -97,6 +97,18 @@
     <Compile Include="UserControls\UCRezervacija\UCKreirajRezervaciju.Designer.cs">
       <DependentUpon>UCKreirajRezervaciju.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCKreirajRezervacijuPrekoAgenta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCKreirajRezervacijuPrekoAgenta.Designer.cs">
+      <DependentUpon>UCKreirajRezervacijuPrekoAgenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCPretraziRezervacije.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCPretraziRezervacije.Designer.cs">
+      <DependentUpon>UCPretraziRezervacije.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCRezervacija\UCKreirajRezervaciju.resx">
       <DependentUpon>UCKreirajRezervaciju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCRezervacija\UCKreirajRezervacijuPrekoAgenta.resx">
+      <DependentUpon>UCKreirajRezervacijuPrekoAgenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCRezervacija\UCPretraziRezervacije.resx">
+      <DependentUpon>UCPretraziRezervacije.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

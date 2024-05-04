@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9CF902-445C-4C74-8885-32F3DC9FE97D}|Client\\Client.csproj|c:\\users\\pc\\desktop\\projekat softveri\\aptreservation\\client\\guicontroller\\rezervacijaguicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9CF902-445C-4C74-8885-32F3DC9FE97D}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\rezervacijaguicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6F2330F-B731-4133-8CD0-57DED47063E3}|DBBroker\\DBBroker.csproj|c:\\users\\pc\\desktop\\projekat softveri\\aptreservation\\dbbroker\\broker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6F2330F-B731-4133-8CD0-57DED47063E3}|DBBroker\\DBBroker.csproj|solutionrelative:dbbroker\\broker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9887180D-CE96-49EB-8FD3-2A28ECB4B36E}|Server\\Server.csproj|c:\\users\\pc\\desktop\\projekat softveri\\aptreservation\\server\\systemoperation\\sorezervacija\\pretrazirezervacijeso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9887180D-CE96-49EB-8FD3-2A28ECB4B36E}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\sorezervacija\\pretrazirezervacijeso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9887180D-CE96-49EB-8FD3-2A28ECB4B36E}|Server\\Server.csproj|C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\server\\systemoperation\\sorezervacija\\ucitajrezervacijeso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9887180D-CE96-49EB-8FD3-2A28ECB4B36E}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\sorezervacija\\ucitajrezervacijeso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +35,58 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Broker.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\DBBroker\\Broker.cs",
+              "RelativeDocumentMoniker": "DBBroker\\Broker.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\DBBroker\\Broker.cs",
+              "RelativeToolTip": "DBBroker\\Broker.cs",
+              "ViewState": "AQIAANMAAAAAAAAAAIAwwNoAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T20:40:57.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PretraziRezervacijeSO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Server\\SystemOperation\\SORezervacija\\PretraziRezervacijeSO.cs",
+              "RelativeDocumentMoniker": "Server\\SystemOperation\\SORezervacija\\PretraziRezervacijeSO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Server\\SystemOperation\\SORezervacija\\PretraziRezervacijeSO.cs",
+              "RelativeToolTip": "Server\\SystemOperation\\SORezervacija\\PretraziRezervacijeSO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T20:37:38.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RezervacijaGuiController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Client\\GuiController\\RezervacijaGuiController.cs",
+              "RelativeDocumentMoniker": "Client\\GuiController\\RezervacijaGuiController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Client\\GuiController\\RezervacijaGuiController.cs",
+              "RelativeToolTip": "Client\\GuiController\\RezervacijaGuiController.cs",
+              "ViewState": "AQIAAGIAAAAAAAAAAIAwwHIAAABmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T20:30:35.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UcitajRezervacijeSO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Server\\SystemOperation\\SORezervacija\\UcitajRezervacijeSO.cs",
+              "RelativeDocumentMoniker": "Server\\SystemOperation\\SORezervacija\\UcitajRezervacijeSO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Server\\SystemOperation\\SORezervacija\\UcitajRezervacijeSO.cs",
+              "RelativeToolTip": "Server\\SystemOperation\\SORezervacija\\UcitajRezervacijeSO.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAswAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T15:14:37.363Z",
+              "EditorCaption": ""
             }
           ]
         },

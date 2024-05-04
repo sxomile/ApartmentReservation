@@ -88,6 +88,30 @@ namespace Server
 
                     break;
 
+                    case Operation.GetAllGosti:
+
+                        res.Result = Controller.Instance.GetAllGosti();
+
+                    break;
+
+                    case Operation.PretraziGoste:
+
+                        res.Result = Controller.Instance.PretraziGoste((string) req.Argument);
+
+                    break;
+
+                    case Operation.GetAllRezervacije:
+
+                        res.Result = Controller.Instance.GetAllRezervacije();
+
+                    break;
+
+                    case Operation.PretraziRezervacije:
+
+                        res.Result = Controller.Instance.PretraziRezervacije((string)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

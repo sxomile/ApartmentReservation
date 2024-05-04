@@ -17,3 +17,5 @@ C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Use
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCDomacinstvo.UCPretraziDomacinstvo.resources
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCApartman.ucPretraziApartman.resources
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCRezervacija.UCKreirajRezervaciju.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCRezervacija.ucKreirajRezervacijuPrekoAgenta.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCRezervacija.UCPretraziRezervacije.resources

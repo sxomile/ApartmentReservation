@@ -162,7 +162,7 @@ namespace DBBroker
             SqlCommand command = connection.CreateCommand();
             command.CommandText = $"select top 1 * from {obj.TableName} where {obj.GetIdQuery()}";
             SqlDataReader reader = command.ExecuteReader();
-            obj.SetValues((Domacinstvo)obj, reader);
+            obj.SetValues(obj, reader);
             return obj;
         }
 
@@ -184,6 +184,68 @@ namespace DBBroker
             }
 
             return true;
+        }
+
+        public BindingList<User> PretraziGoste(string upit)
+        {
+            BindingList<User> gosti = new BindingList<User>();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"select * from [User] where ime like '%{upit}%' " +
+                $"or prezime like '%{upit}%' or username = '%{upit}%' or ime + ' ' + prezime like '%{upit}%'";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                User gost = new User()
+                {
+                    Id = (int)reader["ID"],
+                    Ime = (string)reader["ime"],
+                    Prezime = (string)reader["prezime"],
+                    Username = (string)reader["username"],
+                    Uloga = (Role)reader["uloga"],
+                };
+
+                if(gost.Uloga == Role.Gost) gosti.Add(gost);
+                
+            }
+
+            reader.Close();
+
+            return gosti;
+        }
+
+        public BindingList<Rezervacija> PretraziRezervacije(string upit)
+        {
+            BindingList<Rezervacija> rezervacije = new BindingList<Rezervacija>();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"select * from Rezervacija where RezervacijaID like '%{upit}%'";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Rezervacija rezervacija = new Rezervacija()
+                {
+                    RezervacijaID = reader["RezervacijaId"].ToString(),
+                    ApartmanID = (int)reader["ApartmanId"],
+                    DomacinstvoID = (int)reader["DomacinstvoId"],
+                    DatumOd = (DateTime)reader["DatumOd"],
+                    DatumDo = (DateTime)reader["DatumDo"],
+                    GostID = (int)reader["GostId"]
+                };
+                rezervacije.Add(rezervacija);
+            }
+
+            reader.Close();
+
+            foreach(Rezervacija rez in rezervacije)
+            {
+                Apartman apt = new Apartman() {ApartmanId = rez.ApartmanID };
+                Domacinstvo dom = new Domacinstvo() {DomacinstvoId = rez.DomacinstvoID};
+                User gost = new User {Id = rez.GostID};
+                rez.Apartman = (Apartman)GetEntityById(apt);
+                rez.Domacinstvo = (Domacinstvo)GetEntityById(dom);
+                rez.Gost = (User)GetEntityById(gost);
+            }
+
+            return rezervacije;
         }
     }
 }

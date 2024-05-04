@@ -64,8 +64,12 @@
     <Compile Include="SystemOperation\SODomacinstvo\PretraziDomacinstvaSO.cs" />
     <Compile Include="SystemOperation\SODomacinstvo\UcitajDomacinstvaSO.cs" />
     <Compile Include="SystemOperation\SOEntity\GetEntityByIdSO.cs" />
+    <Compile Include="SystemOperation\SOGost\PretraziGosteSO.cs" />
+    <Compile Include="SystemOperation\SOGost\UcitajGosteSO.cs" />
     <Compile Include="SystemOperation\SOLogin\LoginSO.cs" />
     <Compile Include="SystemOperation\SORezervacija\KreirajRezervacijuSO.cs" />
+    <Compile Include="SystemOperation\SORezervacija\PretraziRezervacijeSO.cs" />
+    <Compile Include="SystemOperation\SORezervacija\UcitajRezervacijeSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />
     <EmbeddedResource Include="FrmServer.resx">
       <DependentUpon>FrmServer.cs</DependentUpon>

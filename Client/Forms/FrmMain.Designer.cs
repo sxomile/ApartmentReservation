@@ -32,9 +32,11 @@
             this.domacinstvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kreirajDomacinstvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretraziDomacinstvaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlMain = new System.Windows.Forms.Panel();
             this.apartmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pretraziApartmaneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlMain = new System.Windows.Forms.Panel();
+            this.rezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretraziRezervacijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +45,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.domacinstvoToolStripMenuItem,
-            this.apartmanToolStripMenuItem});
+            this.apartmanToolStripMenuItem,
+            this.rezervacijeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 28);
@@ -71,13 +74,6 @@
             this.pretraziDomacinstvaToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.pretraziDomacinstvaToolStripMenuItem.Text = "Pretrazi domacinstva";
             // 
-            // pnlMain
-            // 
-            this.pnlMain.Location = new System.Drawing.Point(13, 32);
-            this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(775, 417);
-            this.pnlMain.TabIndex = 1;
-            // 
             // apartmanToolStripMenuItem
             // 
             this.apartmanToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -92,11 +88,32 @@
             this.pretraziApartmaneToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pretraziApartmaneToolStripMenuItem.Text = "Pretrazi apartmane";
             // 
+            // pnlMain
+            // 
+            this.pnlMain.Location = new System.Drawing.Point(13, 32);
+            this.pnlMain.Name = "pnlMain";
+            this.pnlMain.Size = new System.Drawing.Size(775, 499);
+            this.pnlMain.TabIndex = 1;
+            // 
+            // rezervacijeToolStripMenuItem
+            // 
+            this.rezervacijeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pretraziRezervacijeToolStripMenuItem});
+            this.rezervacijeToolStripMenuItem.Name = "rezervacijeToolStripMenuItem";
+            this.rezervacijeToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
+            this.rezervacijeToolStripMenuItem.Text = "Rezervacije";
+            // 
+            // pretraziRezervacijeToolStripMenuItem
+            // 
+            this.pretraziRezervacijeToolStripMenuItem.Name = "pretraziRezervacijeToolStripMenuItem";
+            this.pretraziRezervacijeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pretraziRezervacijeToolStripMenuItem.Text = "Pretrazi rezervacije";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 543);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -118,5 +135,7 @@
         private System.Windows.Forms.ToolStripMenuItem pretraziDomacinstvaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem apartmanToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pretraziApartmaneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rezervacijeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretraziRezervacijeToolStripMenuItem;
     }
 }

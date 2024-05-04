@@ -158,5 +158,50 @@ namespace Client
             sender.Send(req);
             return (bool)((Response)receiver.Receive()).Result;
         }
+
+        internal BindingList<IEntity> GetAllGosti()
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.GetAllGosti,
+            };
+            sender.Send(req);   
+            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
+        }
+
+        internal BindingList<User> PretraziGoste(string upit)
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.PretraziGoste,
+                Argument = upit
+            };
+
+            sender.Send(req);
+            return (BindingList<User>)((Response)receiver.Receive()).Result;
+        }
+
+        internal BindingList<IEntity> UcitajRezervacije()
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.GetAllRezervacije,
+            };
+
+            sender.Send(req);
+            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
+        }
+
+        internal BindingList<Rezervacija> PretraziRezervacije(string upit)
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.PretraziRezervacije,
+                Argument = upit
+            };
+
+            sender.Send(req);
+            return (BindingList<Rezervacija>)((Response)receiver.Receive()).Result;
+        }
     }
 }

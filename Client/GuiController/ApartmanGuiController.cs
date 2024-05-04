@@ -85,13 +85,32 @@ namespace Client.GuiController
             {
                 MessageBox.Show("Izaberi polje ili red!");
             }
-
             
         }
 
         private void KreirajRezervacijuPrekoAgenta()
         {
-            throw new NotImplementedException();
+            var obj = ucPretraziApartman.dgvApartmani.SelectedCells[0].RowIndex;
+            DataGridViewRow row = ucPretraziApartman.dgvApartmani.Rows[obj];
+            if (row.Index != ucPretraziApartman.dgvApartmani.Rows.Count - 1 && row != null)
+            {
+                Apartman apartman = new Apartman()
+                {
+                    ApartmanId = (int)row.Cells["ApartmanID"].Value,
+                    DomacinstvoId = (int)row.Cells["DomacinstvoID"].Value,
+                    Naziv = row.Cells["Naziv"].Value.ToString(),
+                    ProsecnaOcena = (double)row.Cells["ProsecnaOcena"].Value,
+                };
+                Domacinstvo domacinstvo = new Domacinstvo();
+                domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
+                apartman.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
+                User korisnik = null;
+                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman, korisnik);
+            }
+            else
+            {
+                MessageBox.Show("Izaberi polje ili red!");
+            }
         }
 
         private void PretraziApartmane(string upit)

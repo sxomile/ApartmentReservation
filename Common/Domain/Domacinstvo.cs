@@ -66,5 +66,10 @@ namespace Common.Domain
 
             return domacinstva;
         }
+
+        public override string ToString()
+        {
+            return $"{Naziv}";
+        }
     }
 }

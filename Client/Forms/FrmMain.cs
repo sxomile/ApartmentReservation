@@ -26,10 +26,14 @@ namespace Client.Forms
 
                 domacinstvoToolStripMenuItem.Visible = false;
 
+                pretraziRezervacijeToolStripMenuItem.Click += (s, e) =>
+                    MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search, korisnik: korisnik);
+
             }
             else
             {
-                //ovo usput po potrebi obavezno menjaj
+                pretraziRezervacijeToolStripMenuItem.Click += (s, e) => 
+                    MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search);
             }
 
             kreirajDomacinstvoToolStripMenuItem.Click += (s, e) =>
@@ -40,6 +44,7 @@ namespace Client.Forms
 
             pretraziApartmaneToolStripMenuItem.Click += (s, e) =>
                 MainCoordinator.Instance.ShowApartmanPanel(korisnik);
+
         }
 
         internal void ChanglePanel(Control control)

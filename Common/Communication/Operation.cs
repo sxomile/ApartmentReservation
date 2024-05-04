@@ -15,6 +15,10 @@ namespace Common.Communication
         GetAllApartman,
         PretraziApartmane,
         GetEntityById,
-        KreirajRezervaciju
+        KreirajRezervaciju,
+        GetAllGosti,
+        PretraziGoste,
+        GetAllRezervacije,
+        PretraziRezervacije
     }
 }

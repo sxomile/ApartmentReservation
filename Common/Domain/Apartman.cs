@@ -21,7 +21,7 @@ namespace Common.Domain
 
         public string GetIdQuery()
         {
-            throw new NotImplementedException();
+            return $"ApartmanId = {ApartmanId}";
         }
 
         public void PrepareCommand(SqlCommand cmd)
@@ -35,7 +35,14 @@ namespace Common.Domain
 
         public void SetValues(IEntity entity, SqlDataReader reader)
         {
-            throw new NotImplementedException();
+            if (reader.Read())
+            {
+                ((Apartman)entity).ApartmanId = (int)reader["ApartmanID"];
+                ((Apartman)entity).DomacinstvoId = (int)reader["DomacinstvoID"];
+                ((Apartman)entity).Naziv = reader["Naziv"].ToString();
+                ((Apartman)entity).ProsecnaOcena = (double)reader["ProsecnaOcena"];
+            }
+            reader.Close();
         }
 
         BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
@@ -57,6 +64,11 @@ namespace Common.Domain
             reader.Close();
 
             return apartmani;
+        }
+
+        public override string ToString()
+        {
+            return $"{Naziv}";
         }
     }
 }

@@ -39,6 +39,7 @@ namespace Common.Domain
                 {
                     RezervacijaID = (string)reader["RezervacijaID"],
                     ApartmanID = (int)reader["ApartmanID"],
+                    DomacinstvoID = (int)reader["DomacinstvoId"],
                     GostID = (int)reader["GostID"],
                     DatumOd = (DateTime)reader["DatumOd"],
                     DatumDo = (DateTime)reader["DatumDo"]
