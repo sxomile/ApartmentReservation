@@ -47,7 +47,7 @@ namespace Client.Forms
 
         }
 
-        internal void ChanglePanel(Control control)
+        internal void ChangePanel(Control control)
         {
             pnlMain.Controls.Clear();
             pnlMain.Controls.Add(control);

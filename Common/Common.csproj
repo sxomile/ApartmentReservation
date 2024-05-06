@@ -49,6 +49,7 @@
     <Compile Include="Domain\Apartman.cs" />
     <Compile Include="Domain\Domacinstvo.cs" />
     <Compile Include="Domain\IEntity.cs" />
+    <Compile Include="Domain\Ocena.cs" />
     <Compile Include="Domain\Rezervacija.cs" />
     <Compile Include="Domain\Role.cs" />
     <Compile Include="Domain\User.cs" />

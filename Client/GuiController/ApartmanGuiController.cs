@@ -21,6 +21,10 @@ namespace Client.GuiController
         {
             apartmani.Clear();
             ucPretraziApartman = new ucPretraziApartman();
+            if(korisnik.Uloga == Role.Agent)
+            {
+                ucPretraziApartman.btnOceni.Visible = false;
+            }
             BindingList<IEntity> apts = Communication.Instance.GetAllApartman();
             foreach (IEntity entity in apts)
             {
@@ -59,7 +63,35 @@ namespace Client.GuiController
             ucPretraziApartman.btnPretrazi.Click += (s, e) =>
                 PretraziApartmane(ucPretraziApartman.txtUpit.Text);
 
+            ucPretraziApartman.btnOceni.Click += (s, e) =>
+                OceniApartman();
+
             return ucPretraziApartman;
+        }
+
+        private void OceniApartman()
+        {
+            var obj = ucPretraziApartman.dgvApartmani.SelectedCells[0].RowIndex;
+            DataGridViewRow row = ucPretraziApartman.dgvApartmani.Rows[obj];
+            if (row.Index != ucPretraziApartman.dgvApartmani.Rows.Count - 1 && row != null)
+            {
+                Apartman apartman = new Apartman()
+                {
+                    ApartmanId = (int)row.Cells["ApartmanID"].Value,
+                    DomacinstvoId = (int)row.Cells["DomacinstvoID"].Value,
+                    Naziv = row.Cells["Naziv"].Value.ToString(),
+                    ProsecnaOcena = (double)row.Cells["ProsecnaOcena"].Value,
+                };
+                Domacinstvo domacinstvo = new Domacinstvo();
+                domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
+                apartman.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
+                User korisnik = this.korisnik;
+                MainCoordinator.Instance.ShowUCOceni(apartman, korisnik);
+            }
+            else
+            {
+                MessageBox.Show("Izaberi polje ili red!");
+            }
         }
 
         private void KreirajRezervaciju()

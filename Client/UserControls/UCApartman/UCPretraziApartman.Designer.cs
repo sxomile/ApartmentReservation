@@ -34,6 +34,7 @@
             this.dgvApartmani = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRezervisi = new System.Windows.Forms.Button();
+            this.btnOceni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,14 +84,24 @@
             this.btnRezervisi.Name = "btnRezervisi";
             this.btnRezervisi.Size = new System.Drawing.Size(96, 51);
             this.btnRezervisi.TabIndex = 5;
-            this.btnRezervisi.Text = "Rezervisi";
+            this.btnRezervisi.Text = "Rezervisi apartman";
             this.btnRezervisi.UseVisualStyleBackColor = true;
             this.btnRezervisi.Click += new System.EventHandler(this.btnRezervisi_Click);
+            // 
+            // btnOceni
+            // 
+            this.btnOceni.Location = new System.Drawing.Point(476, 300);
+            this.btnOceni.Name = "btnOceni";
+            this.btnOceni.Size = new System.Drawing.Size(96, 51);
+            this.btnOceni.TabIndex = 6;
+            this.btnOceni.Text = "Oceni apartman";
+            this.btnOceni.UseVisualStyleBackColor = true;
             // 
             // ucPretraziApartman
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnOceni);
             this.Controls.Add(this.btnRezervisi);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPretrazi);
@@ -111,5 +122,6 @@
         public System.Windows.Forms.DataGridView dgvApartmani;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnRezervisi;
+        public System.Windows.Forms.Button btnOceni;
     }
 }

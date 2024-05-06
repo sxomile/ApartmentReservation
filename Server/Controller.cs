@@ -5,6 +5,7 @@ using Server.SystemOperation.SODomacinstvo;
 using Server.SystemOperation.SOEntity;
 using Server.SystemOperation.SOGost;
 using Server.SystemOperation.SOLogin;
+using Server.SystemOperation.SOOcena;
 using Server.SystemOperation.SORezervacija;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,13 @@ namespace Server
             LoginSO loginSO = new LoginSO(korisnik);
             loginSO.ExecuteTemplate();
             return loginSO.Result;
+        }
+
+        internal object OceniApartman(Ocena ocena)
+        {
+            OceniApartmanSO oceniApartmanSO = new OceniApartmanSO(ocena);
+            oceniApartmanSO.ExecuteTemplate();
+            return oceniApartmanSO.Result;
         }
 
         internal object PretraziApartmane(string argument)

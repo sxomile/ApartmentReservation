@@ -19,6 +19,7 @@ namespace Common.Communication
         GetAllGosti,
         PretraziGoste,
         GetAllRezervacije,
-        PretraziRezervacije
+        PretraziRezervacije,
+        Oceni
     }
 }

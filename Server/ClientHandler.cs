@@ -112,6 +112,12 @@ namespace Server
 
                     break;
 
+                    case Operation.Oceni:
+
+                        res.Result = Controller.Instance.OceniApartman((Ocena)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

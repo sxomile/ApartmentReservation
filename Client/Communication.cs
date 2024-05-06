@@ -203,5 +203,18 @@ namespace Client
             sender.Send(req);
             return (BindingList<Rezervacija>)((Response)receiver.Receive()).Result;
         }
+
+        internal bool OceniApartman(Ocena ocena)
+        {
+            Request req = new Request()
+            {
+                Operation = Operation.Oceni,
+                Argument = ocena,
+            };
+
+            sender.Send(req);
+            return (bool)((Response)receiver.Receive()).Result;
+            
+        }
     }
 }

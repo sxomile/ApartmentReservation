@@ -63,6 +63,7 @@
     <Compile Include="GuiController\DomacinstvoGUIController.cs" />
     <Compile Include="GuiController\LoginGuiController.cs" />
     <Compile Include="GuiController\MainCoordinator.cs" />
+    <Compile Include="GuiController\OcenaGuiController.cs" />
     <Compile Include="GuiController\RezervacijaGuiController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,6 +92,12 @@
       <DependentUpon>UCPretraziDomacinstvo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCMode.cs" />
+    <Compile Include="UserControls\UCOcena\UCOceni.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCOcena\UCOceni.Designer.cs">
+      <DependentUpon>UCOceni.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCRezervacija\UCKreirajRezervaciju.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCDomacinstvo\UCPretraziDomacinstvo.resx">
       <DependentUpon>UCPretraziDomacinstvo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCOcena\UCOceni.resx">
+      <DependentUpon>UCOceni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCRezervacija\UCKreirajRezervaciju.resx">
       <DependentUpon>UCKreirajRezervaciju.cs</DependentUpon>
