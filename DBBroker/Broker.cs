@@ -41,6 +41,14 @@ namespace DBBroker
             return list;
         }
 
+        public void Delete(IEntity entity)
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = $"delete from {entity.TableName} where {entity.GetIdQuery()}";
+            command.ExecuteNonQuery();
+            command.Dispose();
+        }
+
         public void Commit()
         {
             connection.Commit();       

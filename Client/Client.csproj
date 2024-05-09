@@ -110,6 +110,12 @@
     <Compile Include="UserControls\UCRezervacija\UCKreirajRezervacijuPrekoAgenta.Designer.cs">
       <DependentUpon>UCKreirajRezervacijuPrekoAgenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCObrisiRezervaciju.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCRezervacija\UCObrisiRezervaciju.Designer.cs">
+      <DependentUpon>UCObrisiRezervaciju.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCRezervacija\UCPretraziRezervacije.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCRezervacija\UCKreirajRezervacijuPrekoAgenta.resx">
       <DependentUpon>UCKreirajRezervacijuPrekoAgenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UCRezervacija\UCObrisiRezervaciju.resx">
+      <DependentUpon>UCObrisiRezervaciju.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UCRezervacija\UCPretraziRezervacije.resx">
       <DependentUpon>UCPretraziRezervacije.cs</DependentUpon>

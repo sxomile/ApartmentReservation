@@ -118,6 +118,12 @@ namespace Server
 
                     break;
 
+                    case Operation.OtkaziRezervaciju:
+
+                        res.Result = Controller.Instance.OtkaziRezervaciju((Rezervacija)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

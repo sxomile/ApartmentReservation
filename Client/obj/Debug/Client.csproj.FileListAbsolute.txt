@@ -20,3 +20,4 @@ C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.Use
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCRezervacija.ucKreirajRezervacijuPrekoAgenta.resources
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCRezervacija.UCPretraziRezervacije.resources
 C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCOcena.UCOceni.resources
+C:\Users\PC\Desktop\Projekat softveri\AptReservation\Client\obj\Debug\Client.UserControls.UCRezervacija.UCObrisiRezervaciju.resources

@@ -83,6 +83,13 @@ namespace Server
             return oceniApartmanSO.Result;
         }
 
+        internal object OtkaziRezervaciju(Rezervacija rezervacija)
+        {
+            OtkaziRezervacijuSO otkaziRezervacijuSO = new OtkaziRezervacijuSO(rezervacija);
+            otkaziRezervacijuSO.ExecuteTemplate();
+            return otkaziRezervacijuSO.Result;
+        }
+
         internal object PretraziApartmane(string argument)
         {
             PretraziApartmaneSO pretraziApartmaneSO = new PretraziApartmaneSO(argument);

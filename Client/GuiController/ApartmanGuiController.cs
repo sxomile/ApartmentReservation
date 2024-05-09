@@ -136,8 +136,8 @@ namespace Client.GuiController
                 Domacinstvo domacinstvo = new Domacinstvo();
                 domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
                 apartman.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
-                User korisnik = null;
-                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman, korisnik);
+                //User korisnik = null;
+                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman, this.korisnik);
             }
             else
             {

@@ -56,7 +56,7 @@ namespace Client
             List<Apartman> apartmani = new List<Apartman>();    
             foreach(DataGridViewRow row in dgvApartmani.Rows)
             {
-                if (!row.IsNewRow)
+                if (!row.IsNewRow && row.Cells[0].Value != null && row.Cells[0].Value.ToString() != string.Empty)
                 {
                     Apartman apartman = new Apartman()
                     {
@@ -145,7 +145,7 @@ namespace Client
                 Argument = obj
             };
             sender.Send(request);
-            return (Domacinstvo)((Response)receiver.Receive()).Result;
+            return (IEntity)((Response)receiver.Receive()).Result;
         }
 
         internal bool KreirajRezervaciju(Rezervacija rezervacija)
@@ -215,6 +215,18 @@ namespace Client
             sender.Send(req);
             return (bool)((Response)receiver.Receive()).Result;
             
+        }
+
+        internal bool OtkaziRezervaciju(Rezervacija reservation)
+        {
+            Request request = new Request()
+            {
+                Operation = Operation.OtkaziRezervaciju,
+                Argument = reservation
+            };
+
+            sender.Send(request);
+            return (bool)((Response)receiver.Receive()).Result;
         }
     }
 }

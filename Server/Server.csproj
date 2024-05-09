@@ -69,6 +69,7 @@
     <Compile Include="SystemOperation\SOLogin\LoginSO.cs" />
     <Compile Include="SystemOperation\SOOcena\OceniApartmanSO.cs" />
     <Compile Include="SystemOperation\SORezervacija\KreirajRezervacijuSO.cs" />
+    <Compile Include="SystemOperation\SORezervacija\OtkaziRezervacijuSO.cs" />
     <Compile Include="SystemOperation\SORezervacija\PretraziRezervacijeSO.cs" />
     <Compile Include="SystemOperation\SORezervacija\UcitajRezervacijeSO.cs" />
     <Compile Include="SystemOperation\SystemOperationBase.cs" />

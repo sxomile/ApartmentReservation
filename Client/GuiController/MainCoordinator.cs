@@ -62,9 +62,9 @@ namespace Client.GuiController
             frmMain.ChangePanel(apartmanGuiController.CreateUCApartman(korisnik));
         }
 
-        internal void ShowUCRezervacija(UCMode mode, Apartman apartman = null, User korisnik = null)
+        internal void ShowUCRezervacija(UCMode mode, Apartman apartman = null, User korisnik = null, Rezervacija rezervacija = null)
         {
-            frmMain.ChangePanel(rezervacijaGuiController.CreateUCRezervacija(mode, apartman, korisnik));
+            frmMain.ChangePanel(rezervacijaGuiController.CreateUCRezervacija(mode, apartman, korisnik, rezervacija));
         }
 
         internal void ShowUCOceni(Apartman apartman, User korisnik)

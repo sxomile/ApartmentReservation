@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnPretraziRezervacije = new System.Windows.Forms.Button();
             this.dgvRezervacije = new System.Windows.Forms.DataGridView();
+            this.btnOtkaziRezervaciju = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRezervacije)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,13 +80,23 @@
             this.dgvRezervacije.Name = "dgvRezervacije";
             this.dgvRezervacije.RowHeadersWidth = 51;
             this.dgvRezervacije.RowTemplate.Height = 24;
-            this.dgvRezervacije.Size = new System.Drawing.Size(713, 251);
+            this.dgvRezervacije.Size = new System.Drawing.Size(600, 251);
             this.dgvRezervacije.TabIndex = 18;
+            // 
+            // btnOtkaziRezervaciju
+            // 
+            this.btnOtkaziRezervaciju.Location = new System.Drawing.Point(639, 197);
+            this.btnOtkaziRezervaciju.Name = "btnOtkaziRezervaciju";
+            this.btnOtkaziRezervaciju.Size = new System.Drawing.Size(120, 65);
+            this.btnOtkaziRezervaciju.TabIndex = 19;
+            this.btnOtkaziRezervaciju.Text = "Otkazi rezervaciju";
+            this.btnOtkaziRezervaciju.UseVisualStyleBackColor = true;
             // 
             // UCPretraziRezervacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnOtkaziRezervaciju);
             this.Controls.Add(this.dgvRezervacije);
             this.Controls.Add(this.btnPretraziRezervacije);
             this.Controls.Add(this.label2);
@@ -106,5 +117,6 @@
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button btnPretraziRezervacije;
         public System.Windows.Forms.DataGridView dgvRezervacije;
+        public System.Windows.Forms.Button btnOtkaziRezervaciju;
     }
 }

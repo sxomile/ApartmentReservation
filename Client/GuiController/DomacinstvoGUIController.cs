@@ -79,6 +79,12 @@ namespace Client.GuiController
 
         internal void DodajDomacinstvo(string naziv, DataGridView dgvApartmani)
         {
+            if (((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text == string.Empty)
+            {
+                MessageBox.Show("Unesi naziv domacinstva!");
+                return;
+            }
+
             bool domacinstvo = Communication.Instance.DodajDomacinstvo(naziv, dgvApartmani);
 
             if(domacinstvo)

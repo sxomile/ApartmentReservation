@@ -87,10 +87,10 @@
             this.btnOtkazi.Name = "btnOtkazi";
             this.btnOtkazi.Size = new System.Drawing.Size(114, 61);
             this.btnOtkazi.TabIndex = 5;
-            this.btnOtkazi.Text = "Otkazi";
+            this.btnOtkazi.Text = "Zavrsi rad";
             this.btnOtkazi.UseVisualStyleBackColor = true;
             // 
-            // UCDomacinstvo
+            // UCUpsertDomacinstvo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,7 +100,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDodaj);
-            this.Name = "UCDomacinstvo";
+            this.Name = "UCUpsertDomacinstvo";
             this.Size = new System.Drawing.Size(573, 441);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).EndInit();
             this.ResumeLayout(false);
