@@ -16,6 +16,7 @@ namespace Client.Forms
         public FrmLogin()
         {
             InitializeComponent();
+            MaximizeBox = false;
         }
     }
 }

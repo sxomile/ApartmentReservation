@@ -55,11 +55,25 @@ namespace Server
             return ucitajRezervacijeSO.Result;
         }
 
+        internal object GetApartmentsOfDomacinstvo(Domacinstvo domacinstvo)
+        {
+            UcitajApartmaneDomacinstvaSO ucitajApartmaneDomacinstvaSO = new UcitajApartmaneDomacinstvaSO(domacinstvo);
+            ucitajApartmaneDomacinstvaSO.ExecuteTemplate();
+            return ucitajApartmaneDomacinstvaSO.Result;
+        }
+
         internal IEntity GetEntityById(IEntity argument)
         {
             GetEntityByIdSO getEntityByIdSO = new GetEntityByIdSO(argument);
             getEntityByIdSO.ExecuteTemplate();
             return getEntityByIdSO.Result;
+        }
+
+        internal object IzmeniDomacinstvo(Tuple<Domacinstvo, Domacinstvo> argument)
+        {
+            IzmeniDomacinstvoSO izmeniDomacinstvoSO = new IzmeniDomacinstvoSO(argument);
+            izmeniDomacinstvoSO.ExecuteTemplate();
+            return izmeniDomacinstvoSO.Result;
         }
 
         internal object KreirajRezervaciju(Rezervacija argument)

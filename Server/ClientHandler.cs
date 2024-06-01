@@ -124,6 +124,18 @@ namespace Server
 
                     break;
 
+                    case Operation.GetApartmentsOfDomacinstvo:
+
+                        res.Result = Controller.Instance.GetApartmentsOfDomacinstvo((Domacinstvo)req.Argument);
+
+                    break;
+
+                    case Operation.IzmeniDomacinstvo:
+
+                        res.Result = Controller.Instance.IzmeniDomacinstvo((Tuple<Domacinstvo, Domacinstvo>)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

@@ -228,5 +228,30 @@ namespace Client
             sender.Send(request);
             return (bool)((Response)receiver.Receive()).Result;
         }
+
+        internal List<Apartman> GetApartmentsOfDomacinstvo(Domacinstvo domacinstvo)
+        {
+            Request request = new Request()
+            {
+                Operation = Operation.GetApartmentsOfDomacinstvo,
+                Argument = domacinstvo
+            };
+
+            sender.Send(request);
+            return (List<Apartman>)((Response)receiver.Receive()).Result;
+        }
+
+        internal bool IzmeniDomacinstvo(Domacinstvo novoDomacinstvo, Domacinstvo staroDomacinstvo)
+        {
+            Tuple<Domacinstvo, Domacinstvo> domacinstva = new Tuple<Domacinstvo, Domacinstvo>(novoDomacinstvo, staroDomacinstvo);
+            Request req = new Request()
+            {
+                Argument = domacinstva, //PRVO NOVO, DRUGO STARO
+                Operation = Operation.IzmeniDomacinstvo,
+            };
+
+            sender.Send(req);
+            return (bool)((Response)receiver.Receive()).Result;
+        }
     }
 }

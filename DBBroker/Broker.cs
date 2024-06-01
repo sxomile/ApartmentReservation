@@ -255,5 +255,42 @@ namespace DBBroker
 
             return rezervacije;
         }
+
+        public List<Apartman> UcitajApartmaneDomacinstva(Domacinstvo domacinstvo)
+        {
+            List<Apartman> apartmani = new List<Apartman>();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"select * from [Apartman] where DomacinstvoId = {domacinstvo.DomacinstvoId}";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                Apartman apartman = new Apartman()
+                {
+                    DomacinstvoId = domacinstvo.DomacinstvoId,
+                    ApartmanId = (int)reader["ApartmanId"],
+                    Domacinstvo = domacinstvo,
+                    Naziv = reader["Naziv"].ToString(),
+                    ProsecnaOcena = (double)reader["ProsecnaOcena"],
+                };
+
+                apartmani.Add(apartman);
+            }
+
+            reader.Close();
+
+            return apartmani;
+        }
+
+        public void Update(string propertyName, object newProp, IEntity entity)
+        {
+            SqlCommand command = connection.CreateCommand();
+            command.CommandText = $"update {entity.TableName} " +
+                $"set {propertyName} = {newProp} " +
+                $"where {entity.GetIdQuery()}";
+            command.ExecuteNonQuery();
+
+        }
+
+
     }
 }

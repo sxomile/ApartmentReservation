@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDodaj = new System.Windows.Forms.Button();
+            this.btnUpsert = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNazivDomacinstva = new System.Windows.Forms.TextBox();
@@ -39,12 +39,12 @@
             // 
             // btnDodaj
             // 
-            this.btnDodaj.Location = new System.Drawing.Point(399, 352);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(114, 61);
-            this.btnDodaj.TabIndex = 0;
-            this.btnDodaj.Text = "Dodaj domacinstvo";
-            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnUpsert.Location = new System.Drawing.Point(399, 352);
+            this.btnUpsert.Name = "btnDodaj";
+            this.btnUpsert.Size = new System.Drawing.Size(114, 61);
+            this.btnUpsert.TabIndex = 0;
+            this.btnUpsert.Text = "Dodaj domacinstvo";
+            this.btnUpsert.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -99,7 +99,7 @@
             this.Controls.Add(this.txtNazivDomacinstva);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnDodaj);
+            this.Controls.Add(this.btnUpsert);
             this.Name = "UCUpsertDomacinstvo";
             this.Size = new System.Drawing.Size(573, 441);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).EndInit();
@@ -110,7 +110,7 @@
 
         #endregion
 
-        public System.Windows.Forms.Button btnDodaj;
+        public System.Windows.Forms.Button btnUpsert;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox txtNazivDomacinstva;

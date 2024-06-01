@@ -25,7 +25,7 @@ namespace Common.Domain
 
         public string GetIdQuery()
         {
-            throw new NotImplementedException();
+            return $"ApartmanId = {ApartmanId}";
         }
 
         public BindingList<IEntity> GetReaderList(SqlDataReader reader)

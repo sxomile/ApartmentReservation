@@ -17,6 +17,7 @@ namespace Server
         public FrmServer()
         {
             InitializeComponent();
+            MaximizeBox = false;
         }
 
         private void btnStart_Click(object sender, EventArgs e)

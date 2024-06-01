@@ -21,6 +21,8 @@ namespace Common.Communication
         GetAllRezervacije,
         PretraziRezervacije,
         Oceni,
-        OtkaziRezervaciju
+        OtkaziRezervaciju,
+        GetApartmentsOfDomacinstvo,
+        IzmeniDomacinstvo
     }
 }

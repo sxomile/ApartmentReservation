@@ -20,6 +20,7 @@ namespace Client.Forms
         {
             this.korisnik = korisnik;
             InitializeComponent();
+            MaximizeBox = false;
 
             if(korisnik.Uloga == Role.Gost)
             {
