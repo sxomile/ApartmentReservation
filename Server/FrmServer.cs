@@ -20,6 +20,11 @@ namespace Server
             MaximizeBox = false;
         }
 
+        private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            server.Stop();
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             server = new Server();

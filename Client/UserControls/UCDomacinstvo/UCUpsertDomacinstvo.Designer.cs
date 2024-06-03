@@ -37,10 +37,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnDodaj
+            // btnUpsert
             // 
             this.btnUpsert.Location = new System.Drawing.Point(399, 352);
-            this.btnUpsert.Name = "btnDodaj";
+            this.btnUpsert.Name = "btnUpsert";
             this.btnUpsert.Size = new System.Drawing.Size(114, 61);
             this.btnUpsert.TabIndex = 0;
             this.btnUpsert.Text = "Dodaj domacinstvo";

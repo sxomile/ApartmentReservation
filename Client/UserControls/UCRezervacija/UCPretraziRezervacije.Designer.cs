@@ -78,6 +78,7 @@
             this.dgvRezervacije.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRezervacije.Location = new System.Drawing.Point(19, 98);
             this.dgvRezervacije.Name = "dgvRezervacije";
+            this.dgvRezervacije.ReadOnly = true;
             this.dgvRezervacije.RowHeadersWidth = 51;
             this.dgvRezervacije.RowTemplate.Height = 24;
             this.dgvRezervacije.Size = new System.Drawing.Size(600, 251);

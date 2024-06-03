@@ -28,6 +28,7 @@ namespace Server
             osluskujuciSocket.Listen(5);
 
             Thread thread = new Thread(AcceptClient); 
+            thread.IsBackground = true;
             thread.Start();
         }
 
