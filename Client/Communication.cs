@@ -3,6 +3,7 @@ using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -22,10 +23,14 @@ namespace Client
 
         public void Connect()
         {
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.Connect("127.0.0.1", 9999);
-            receiver = new Receiver(socket);
-            sender = new Sender(socket);
+            if (socket == null || !socket.Connected)
+            {
+                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(ConfigurationManager.AppSettings["ip"], int.Parse(ConfigurationManager.AppSettings["port"]));
+                receiver = new Receiver(socket);
+                sender = new Sender(socket);
+            }
+            
         }
 
         public void Close()

@@ -187,7 +187,7 @@ namespace DBBroker
 
             foreach(Rezervacija rezervacija in rezervacije)
             {
-                if (rezervacija.DatumOd < data.DatumDo && data.DatumOd < rezervacija.DatumDo)
+                if (rezervacija.DatumOd < data.DatumDo && data.DatumOd < rezervacija.DatumDo && rezervacija.ApartmanID == data.ApartmanID)
                     return false;
             }
 

@@ -25,11 +25,19 @@ namespace Server
 
         public void HandleRequest()
         {
-            while(true)
+            try
             {
-                Request req = (Request)receiver.Receive();
-                Response res = ProcessRequest(req);
-                sender.Send(res);
+                while (true)
+                {
+                    Request req = (Request)receiver.Receive();
+                    Response res = ProcessRequest(req);
+                    sender.Send(res);
+                }
+            } catch (Exception ex)
+            {
+                Debug.WriteLine(">>>>>>" + ex.Message);
+                Server.clients.Remove(this);
+                socket.Close();
             }
         }
 
@@ -145,5 +153,11 @@ namespace Server
 
             return res;
         }
+    
+        public void Close()
+        {
+            socket?.Close();
+        }
+    
     }
 }

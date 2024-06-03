@@ -1,6 +1,7 @@
 ﻿using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,14 @@ namespace Server.SystemOperation.SODomacinstvo
                         ApartmanId = domacinstva.Item2.Apartmani[i].ApartmanId,
                     };
                     broker.Delete(ocena);
-                    broker.Delete(domacinstva.Item2.Apartmani[i]);
+                    try
+                    {
+                        broker.Delete(domacinstva.Item2.Apartmani[i]);
+                    } catch(SqlException ex)
+                    {
+                        Result = false;
+                        return;
+                    }
                     obrisani.Add(domacinstva.Item2.Apartmani[i]);
                     brojObrisanih++;
                 }

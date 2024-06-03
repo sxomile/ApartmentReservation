@@ -20,7 +20,7 @@ namespace Client.GuiController
         private BindingList<Rezervacija> rezervacije = new BindingList<Rezervacija>();
         private User korisnik;
 
-        internal Control CreateUCRezervacija(UCMode mode, Apartman apartman = null, User korisnik = null, Rezervacija reservation = null)
+        internal Control CreateUCRezervacija(UCMode mode, Apartman apartman = null, User korisnik = null, Rezervacija reservation = null, bool roleAdmin = false)
         {
             if(mode == UCMode.Create && korisnik.Uloga == Role.Gost)
             {
@@ -69,8 +69,9 @@ namespace Client.GuiController
                     PretraziGosta(((UCKreirajRezervacijuPrekoAgenta)ucRezervacija).txtGost.Text);
                 ((UCKreirajRezervacijuPrekoAgenta)ucRezervacija).btnRezervisi.Click += (s, e) =>
                     KreirajRezervacijuPrekoAgenta();
-            } else if(mode == UCMode.Search && korisnik == null)
+            } else if((mode == UCMode.Search && korisnik == null) || (mode == UCMode.Search && roleAdmin))
             {
+                bool isAdmin = true;
                 ucRezervacija = new UCPretraziRezervacije();
                 rezervacije.Clear();
                 ((UCPretraziRezervacije)ucRezervacija).label2.Text = "Kreirane rezervacije: ";
@@ -92,9 +93,10 @@ namespace Client.GuiController
                 ((UCPretraziRezervacije)ucRezervacija).btnPretraziRezervacije.Click += (s, e) =>
                     PretraziRezervacije(((UCPretraziRezervacije)ucRezervacija).txtPretraziRezervacije.Text);
                 ((UCPretraziRezervacije)ucRezervacija).btnOtkaziRezervaciju.Click += (s, e) =>
-                    OtkaziRezervaciju();
+                    OtkaziRezervaciju(isAdmin);
             } else if(mode == UCMode.Search && korisnik != null)
             {
+                bool isAdmin = false;
                 ucRezervacija = new UCPretraziRezervacije();
                 rezervacije.Clear();
                 this.korisnik = korisnik;
@@ -119,7 +121,7 @@ namespace Client.GuiController
                 ((UCPretraziRezervacije)ucRezervacija).btnPretraziRezervacije.Click += (s, e) =>
                     PretraziRezervacijeKaoGost(((UCPretraziRezervacije)ucRezervacija).txtPretraziRezervacije.Text);
                 ((UCPretraziRezervacije)ucRezervacija).btnOtkaziRezervaciju.Click += (s, e) =>
-                    OtkaziRezervaciju();
+                    OtkaziRezervaciju(isAdmin);
             } else if(mode == UCMode.Delete)
             {
                 ucRezervacija = new UCObrisiRezervaciju();
@@ -130,14 +132,14 @@ namespace Client.GuiController
                 ((UCObrisiRezervaciju)ucRezervacija).txtDatumOdlaska.Text = reservation.DatumDo.ToShortDateString();
 
                 ((UCObrisiRezervaciju)ucRezervacija).btnOtkazi.Click += (s, e) =>
-                    ObrisiRezervaciju(reservation);
+                    ObrisiRezervaciju(reservation, roleAdmin);
 
             }
 
             return ucRezervacija;
         }
 
-        private void ObrisiRezervaciju(Rezervacija reservation)
+        private void ObrisiRezervaciju(Rezervacija reservation, bool roleAdmin)
         {
             DialogResult dialogResult = MessageBox.Show("Da li ste sigurni da zelite da otkazete rezervaciju?",
                 "Otkazivanje", MessageBoxButtons.YesNo);
@@ -147,7 +149,7 @@ namespace Client.GuiController
                 if (Communication.Instance.OtkaziRezervaciju(reservation))
                 {
                     MessageBox.Show("Rezervacija uspesno otkazana!");
-                    MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search, null, this.korisnik, null);
+                    MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search, null, this.korisnik, null, roleAdmin);
 
                 }
                 else
@@ -159,7 +161,7 @@ namespace Client.GuiController
 
         }
 
-        private void OtkaziRezervaciju()
+        private void OtkaziRezervaciju(bool isAdmin)
         {
             var obj = ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.SelectedCells[0].RowIndex;
             DataGridViewRow row = ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.Rows[obj];
@@ -184,7 +186,7 @@ namespace Client.GuiController
                 rezervacija.Apartman = (Apartman)Communication.Instance.GetEntityById (apartman);
                 rezervacija.Gost = (User)Communication.Instance.GetEntityById(gost);
                 //User korisnik = this.korisnik;
-                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Delete, rezervacija: rezervacija);
+                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Delete, rezervacija: rezervacija, isAdmin: isAdmin);
             }
             else
             {
@@ -319,9 +321,9 @@ namespace Client.GuiController
                 + datumOdlaska.Day + datumOdlaska.Month + datumOdlaska.Year
             };
 
-            bool rezervisan = Communication.Instance.KreirajRezervaciju(rezervacija);
+            bool slobodan = Communication.Instance.KreirajRezervaciju(rezervacija);
 
-            if(rezervisan)
+            if(slobodan)
             {
                 MessageBox.Show("Rezervacija uspesno kreirana\n" +
                     $"Apartman: {apartman.Naziv}\nDomacinstvo: {apartman.Domacinstvo.Naziv}\n" +

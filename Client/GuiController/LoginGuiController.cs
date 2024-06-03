@@ -2,6 +2,7 @@
 using Common.Domain;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,17 +36,27 @@ namespace Client.GuiController
 
         internal void Login(object sender, EventArgs e)
         {
-            Communication.Instance.Connect();
-            User korisnik = Communication.Instance.Login(frmLogin.txtUsername.Text, frmLogin.txtPassword.Text);
-            if(korisnik != null)
+            try
             {
-                frmLogin.Hide();
-                MainCoordinator.Instance.ShowFrmMain(korisnik);
-                frmLogin.Close();
+                Communication.Instance.Connect();
+                User korisnik = Communication.Instance.Login(frmLogin.txtUsername.Text, frmLogin.txtPassword.Text);
+                if (korisnik != null)
+                {
+                    frmLogin.Hide();
+                    MainCoordinator.Instance.ShowFrmMain(korisnik);
+                    frmLogin.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Neuspesan login!");
+                }
+            } catch(IOException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Neuspesan login!");
+                MessageBox.Show("Server je ugasen!");
             }
         }
 

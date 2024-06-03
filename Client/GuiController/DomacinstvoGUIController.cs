@@ -168,13 +168,14 @@ namespace Client.GuiController
                 if (izmenjeno)
                 {
                     MessageBox.Show("Domacinstvo je uspesno izmenjeno!");
+                    MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
+
                 }
                 else
                 {
-                    MessageBox.Show("Doslo je do greske! Probaj ponovo!");
+                    MessageBox.Show("Nije dozvoljeno brisanje apartmana za koje postoji rezervacija!");
                 }
 
-                MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
             }
         }
 
