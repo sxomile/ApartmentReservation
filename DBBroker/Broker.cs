@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//svaki ovaj BindingList posle da prepakujem u List
+//kako ovde tako i u sistemskim operacijama
+//nema puno smisla
+
 namespace DBBroker
 {
     public class Broker
@@ -34,7 +38,7 @@ namespace DBBroker
         public BindingList<IEntity> GetAll(IEntity entity)
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"select * from {entity.TableName}";
+            command.CommandText = $"select * from [{entity.TableName}]";
             SqlDataReader reader = command.ExecuteReader();
             BindingList<IEntity> list = entity.GetReaderList(reader);
             command.Dispose();
@@ -69,216 +73,45 @@ namespace DBBroker
             connection.CloseConnection();
         }
 
-        public User Login(User user)
+        //ova metoda radi posao, ali promeniti posle ovo searchProp i value nekako 
+        //da bude jos jednostavnije
+        //glupo da se one gluposti pisu u SO, komplikovano bespotrebno
+        //lepo za broker msm ali dok neko skonta kako query da formira ima da crkne
+        public BindingList<IEntity> GetAllWithFilter(IEntity entity, string searchProp, string value)
+        {
+
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = $"select * from [{entity.TableName}] where {searchProp} like {value}";
+			SqlDataReader reader = cmd.ExecuteReader();
+			BindingList<IEntity> list = entity.GetReaderList(reader);
+			cmd.Dispose();
+            return list;
+
+		}
+
+        public int AddWithId(IEntity entity)
+        {
+			int id = 0;
+			SqlCommand cmd = connection.CreateCommand();
+			cmd.CommandText = $"insert into {entity.TableName} values {entity.Values} select scope_identity() as [scope]";
+			entity.PrepareCommand(cmd);
+			object result = cmd.ExecuteScalar();
+			if (result != null && result != DBNull.Value)
+			{
+				id = Convert.ToInt32(result);
+			}
+			cmd.Dispose();
+			return id;
+		}
+
+        //ovaj moze da prodje
+        public IEntity GetEntityById(IEntity obj, string use = "")
         {
             SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"select * from [user] where username = '{user.Username}' and password = '{user.Password}'";
-            SqlDataReader reader = command.ExecuteReader();
-            try
-            {
-
-                if (reader.Read())
-                {
-                    user.Prezime = (string)reader["prezime"];
-                    user.Ime = (string)reader["ime"];
-                    user.Id = (int)reader["id"];
-                    user.Uloga = (Role)reader["uloga"];
-                    return user;
-                }
-            }
-            finally
-            {
-                reader.Close();
-            }
-            return null;
-        }
-
-        public bool DodajApartmane(Domacinstvo domacinstvo)
-        {
-            foreach (Apartman apartman in domacinstvo.Apartmani)
-            {
-                Add(apartman);
-            }
-
-            return true;
-
-        }
-
-        public int GetDomacinstvoId(Domacinstvo domacinstvo)
-        {
-            int id = 0;
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"insert into {domacinstvo.TableName} values {domacinstvo.Values} select scope_identity() as [scope]";
-            domacinstvo.PrepareCommand(cmd);
-            object result = cmd.ExecuteScalar();
-            if (result != null && result != DBNull.Value)
-            {
-                id = Convert.ToInt32(result); 
-            }
-            cmd.Dispose();
-            return id;
-        }
-
-        public BindingList<Domacinstvo> PretraziDomacinstvo(string upit)
-        {
-            BindingList<Domacinstvo> domacinstva = new BindingList<Domacinstvo>();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"select * from domacinstvo where naziv like '%{upit}%'";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                Domacinstvo domacinstvo = new Domacinstvo()
-                {
-                    Naziv = (string)reader["Naziv"],
-                    BrojApartmana = (int)reader["BrojApartmana"],
-                };
-
-                domacinstva.Add(domacinstvo);
-            }
-
-            reader.Close();
-
-            return domacinstva;
-        }
-
-        public BindingList<Apartman> PretraziApartmane(string upit)
-        {
-            BindingList<Apartman> apartmani = new BindingList<Apartman>();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"select * from apartman where naziv like '%{upit}%'";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Apartman apartman = new Apartman()
-                {
-                    Naziv = (string)reader["Naziv"],
-                    ProsecnaOcena = (double)reader["ProsecnaOcena"],
-                    DomacinstvoId = (int)reader["DomacinstvoID"],
-                    ApartmanId = (int)reader["ApartmanID"]
-                };
-
-                apartmani.Add(apartman);
-            }
-
-            reader.Close();
-
-            return apartmani;
-        }
-
-        public IEntity GetEntityById(IEntity obj)
-        {
-            SqlCommand command = connection.CreateCommand();
-            command.CommandText = $"select top 1 * from {obj.TableName} where {obj.GetIdQuery()}";
+            command.CommandText = $"select top 1 * from [{obj.TableName}] where {obj.GetIdQuery(use)}";
             SqlDataReader reader = command.ExecuteReader();
             obj.SetValues(obj, reader);
             return obj;
-        }
-
-        public bool ProveriRezervaciju(Rezervacija data)
-        {
-            List<IEntity> rezs = new List<IEntity>(GetAll(data));
-            List<Rezervacija> rezervacije = new List<Rezervacija>();
-
-            foreach(IEntity ent in rezs)
-            {
-                Rezervacija rez = (Rezervacija)ent;
-                rezervacije.Add(rez);
-            }
-
-            foreach(Rezervacija rezervacija in rezervacije)
-            {
-                if (rezervacija.DatumOd < data.DatumDo && data.DatumOd < rezervacija.DatumDo && rezervacija.ApartmanID == data.ApartmanID)
-                    return false;
-            }
-
-            return true;
-        }
-
-        public BindingList<User> PretraziGoste(string upit)
-        {
-            BindingList<User> gosti = new BindingList<User>();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"select * from [User] where ime like '%{upit}%' " +
-                $"or prezime like '%{upit}%' or username = '%{upit}%' or ime + ' ' + prezime like '%{upit}%'";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                User gost = new User()
-                {
-                    Id = (int)reader["ID"],
-                    Ime = (string)reader["ime"],
-                    Prezime = (string)reader["prezime"],
-                    Username = (string)reader["username"],
-                    Uloga = (Role)reader["uloga"],
-                };
-
-                if(gost.Uloga == Role.Gost) gosti.Add(gost);
-                
-            }
-
-            reader.Close();
-
-            return gosti;
-        }
-
-        public BindingList<Rezervacija> PretraziRezervacije(string upit)
-        {
-            BindingList<Rezervacija> rezervacije = new BindingList<Rezervacija>();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"select * from Rezervacija where RezervacijaID like '%{upit}%'";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Rezervacija rezervacija = new Rezervacija()
-                {
-                    RezervacijaID = reader["RezervacijaId"].ToString(),
-                    ApartmanID = (int)reader["ApartmanId"],
-                    DomacinstvoID = (int)reader["DomacinstvoId"],
-                    DatumOd = (DateTime)reader["DatumOd"],
-                    DatumDo = (DateTime)reader["DatumDo"],
-                    GostID = (int)reader["GostId"]
-                };
-                rezervacije.Add(rezervacija);
-            }
-
-            reader.Close();
-
-            foreach(Rezervacija rez in rezervacije)
-            {
-                Apartman apt = new Apartman() {ApartmanId = rez.ApartmanID };
-                Domacinstvo dom = new Domacinstvo() {DomacinstvoId = rez.DomacinstvoID};
-                User gost = new User {Id = rez.GostID};
-                rez.Apartman = (Apartman)GetEntityById(apt);
-                rez.Domacinstvo = (Domacinstvo)GetEntityById(dom);
-                rez.Gost = (User)GetEntityById(gost);
-            }
-
-            return rezervacije;
-        }
-
-        public List<Apartman> UcitajApartmaneDomacinstva(Domacinstvo domacinstvo)
-        {
-            List<Apartman> apartmani = new List<Apartman>();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"select * from [Apartman] where DomacinstvoId = {domacinstvo.DomacinstvoId}";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
-            {
-                Apartman apartman = new Apartman()
-                {
-                    DomacinstvoId = domacinstvo.DomacinstvoId,
-                    ApartmanId = (int)reader["ApartmanId"],
-                    Domacinstvo = domacinstvo,
-                    Naziv = reader["Naziv"].ToString(),
-                    ProsecnaOcena = (double)reader["ProsecnaOcena"],
-                };
-
-                apartmani.Add(apartman);
-            }
-
-            reader.Close();
-
-            return apartmani;
         }
 
         public void Update(string propertyName, object newProp, IEntity entity)
@@ -290,7 +123,6 @@ namespace DBBroker
             command.ExecuteNonQuery();
 
         }
-
 
     }
 }

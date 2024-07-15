@@ -18,9 +18,13 @@ namespace Server.SystemOperation.SODomacinstvo
 
         protected override void ExecuteConcreteOperation()
         {
-            int domId = broker.GetDomacinstvoId(domacinstvo);
+            int domId = broker.AddWithId(domacinstvo);
             domacinstvo.DomacinstvoId = domId;
-            Result = broker.DodajApartmane(domacinstvo);
+			foreach (Apartman apartman in domacinstvo.Apartmani)
+			{
+				broker.Add(apartman);
+			}
+            Result = true;
         }
     }
 }

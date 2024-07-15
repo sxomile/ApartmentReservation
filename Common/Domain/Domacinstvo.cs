@@ -19,14 +19,9 @@ namespace Common.Domain
 
         public string Values => "(@Naziv, @BrojApartmana)";
 
-        public string GetIdQuery()
+        public string GetIdQuery(string use = "")
         {
             return $"DomacinstvoId = {DomacinstvoId}";
-        }
-
-        public List<IEntity> GetReaderList(SqlDataReader reader)
-        {
-            throw new NotImplementedException();
         }
 
         public void PrepareCommand(SqlCommand cmd)
@@ -71,5 +66,10 @@ namespace Common.Domain
         {
             return $"{Naziv}";
         }
-    }
+
+		public bool Validate(IEntity entity, List<IEntity> entities)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

@@ -11,14 +11,15 @@ namespace Server.SystemOperation.SOApartman
     internal class PretraziApartmaneSO : SystemOperationBase
     {
         private string upit;
-        public BindingList<Apartman> Result { get; set; } = null;
+        public BindingList<IEntity> Result { get; set; } = null;
         public PretraziApartmaneSO(string upit)
         {
             this.upit = upit;
         }
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.PretraziApartmane(upit);
+            Apartman apt = new Apartman();
+            Result = broker.GetAllWithFilter(apt, "naziv", $"'%{upit}%'");
         }
     }
 }

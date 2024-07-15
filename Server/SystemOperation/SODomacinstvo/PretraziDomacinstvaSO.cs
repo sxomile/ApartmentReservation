@@ -11,14 +11,15 @@ namespace Server.SystemOperation.SODomacinstvo
     internal class PretraziDomacinstvaSO : SystemOperationBase
     {
         private string upit;
-        public BindingList<Domacinstvo> Result { get; set; } = null;
+        public BindingList<IEntity> Result { get; set; } = null;
         public PretraziDomacinstvaSO(string upit)
         {
             this.upit = upit;
         }
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.PretraziDomacinstvo(upit);
+			IEntity domacinstvo = new Domacinstvo();
+			Result = broker.GetAllWithFilter(domacinstvo, "naziv", $"'%{upit}%'");
         }
     }
 }

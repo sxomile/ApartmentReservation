@@ -12,10 +12,10 @@ namespace Common.Domain
     {
         string TableName {  get; }
         string Values {  get; }
-        string GetIdQuery();
-
+        string GetIdQuery(string use = "");
         BindingList<IEntity> GetReaderList(SqlDataReader reader);
         void PrepareCommand(SqlCommand cmd);
         void SetValues(IEntity entity, SqlDataReader reader);
+        bool Validate(IEntity entity, List<IEntity> entities);
     }
 }

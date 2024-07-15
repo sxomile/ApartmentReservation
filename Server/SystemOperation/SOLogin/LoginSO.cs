@@ -10,7 +10,7 @@ namespace Server.SystemOperation.SOLogin
     internal class LoginSO : SystemOperationBase
     {
         private User korisnik;
-        public User Result {  get; set; }
+        public IEntity Result {  get; set; }
         public LoginSO(User korisnik)
         {
             this.korisnik = korisnik;
@@ -18,7 +18,7 @@ namespace Server.SystemOperation.SOLogin
 
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.Login(korisnik);
+            Result = broker.GetEntityById(korisnik);
         }
     }
 }

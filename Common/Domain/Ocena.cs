@@ -23,7 +23,7 @@ namespace Common.Domain
 
         public string Values => "(@DomacinstvoID, @ApartmanID, @GostID, @OcenaApartmana)";
 
-        public string GetIdQuery()
+        public string GetIdQuery(string use = "")
         {
             return $"ApartmanId = {ApartmanId}";
         }
@@ -46,5 +46,10 @@ namespace Common.Domain
         {
             throw new NotImplementedException();
         }
-    }
+
+		public bool Validate(IEntity entity, List<IEntity> entities)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

@@ -17,14 +17,21 @@ namespace Common.Domain
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public Role Uloga { get; set; }
-
-        public string TableName => "[User]";
+        public string TableName => "User";
 
         public string Values => throw new NotImplementedException();
 
-        public string GetIdQuery()
+        public string GetIdQuery(string use = "")
         {
-            return $"Id = {Id}";
+            switch (use)
+            {
+                case "login":
+
+                    return $"username = '{Username}' and password = '{Password}'";
+
+                default:
+					return $"Id = {Id}";
+			}
         }
 
         public BindingList<IEntity> GetReaderList(SqlDataReader reader)
@@ -71,5 +78,10 @@ namespace Common.Domain
         {
             return $"{Ime} {Prezime} {Username}";
         }
-    }
+
+		public bool Validate(IEntity entity)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

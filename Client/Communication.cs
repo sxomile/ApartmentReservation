@@ -117,7 +117,7 @@ namespace Client
             };
 
             sender.Send(req);
-            return (BindingList<Domacinstvo>)((Response)receiver.Receive()).Result;
+            return new BindingList<Domacinstvo>((List<Domacinstvo>)((Response)receiver.Receive()).Result);
         }
 
         internal BindingList<IEntity> GetAllApartman()
@@ -139,7 +139,7 @@ namespace Client
             };
 
             sender.Send(req);
-            return (BindingList<Apartman>)((Response)receiver.Receive()).Result;
+            return new BindingList<Apartman>((List<Apartman>)((Response)receiver.Receive()).Result);
         }
 
         internal IEntity GetEntityById(object obj)
@@ -183,7 +183,7 @@ namespace Client
             };
 
             sender.Send(req);
-            return (BindingList<User>)((Response)receiver.Receive()).Result;
+            return new BindingList<User>((List<User>)((Response)receiver.Receive()).Result);
         }
 
         internal BindingList<IEntity> UcitajRezervacije()
@@ -206,7 +206,7 @@ namespace Client
             };
 
             sender.Send(req);
-            return (BindingList<Rezervacija>)((Response)receiver.Receive()).Result;
+            return new BindingList<Rezervacija>((List<Rezervacija>)((Response)receiver.Receive()).Result);
         }
 
         internal bool OceniApartman(Ocena ocena)

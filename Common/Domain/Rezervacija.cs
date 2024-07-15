@@ -25,7 +25,7 @@ namespace Common.Domain
 
         public string Values => "(@RezervacijaID, @ApartmanID, @GostID, @DatumOd, @DatumDo, @DomacinstvoID)";
 
-        public string GetIdQuery()
+        public string GetIdQuery(string use = "")
         {
             return $"RezervacijaID = '{RezervacijaID}'";
         }
@@ -47,7 +47,7 @@ namespace Common.Domain
 
                 rezervacije.Add(rezervacija);
             }
-
+            
             reader.Close();
 
             return rezervacije;
@@ -68,5 +68,25 @@ namespace Common.Domain
         {
             throw new NotImplementedException();
         }
-    }
+
+		public bool Validate(IEntity entity, List<IEntity> entities)
+		{
+            Rezervacija data = (Rezervacija)entity;
+			List<Rezervacija> rezervacije = new List<Rezervacija>();
+
+			foreach (IEntity ent in entities)
+			{
+				Rezervacija rez = (Rezervacija)ent;
+				rezervacije.Add(rez);
+			}
+
+			foreach (Rezervacija rezervacija in rezervacije)
+			{
+				if (rezervacija.DatumOd < data.DatumDo && data.DatumOd < rezervacija.DatumDo && rezervacija.ApartmanID == data.ApartmanID)
+					return false;
+			}
+
+			return true;
+		}
+	}
 }

@@ -11,14 +11,15 @@ namespace Server.SystemOperation.SOApartman
     internal class UcitajApartmaneDomacinstvaSO : SystemOperationBase
     {
         private Domacinstvo domacinstvo;
-        public List<Apartman> Result { get; set; } = null;
+        public BindingList<IEntity> Result { get; set; } = null;
         public UcitajApartmaneDomacinstvaSO(Domacinstvo domacinstvo)
         {
             this.domacinstvo = domacinstvo;
         }
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.UcitajApartmaneDomacinstva(domacinstvo);
+            Apartman apt = new Apartman();
+            Result = broker.GetAllWithFilter(apt, "DomacinstvoId", domacinstvo.DomacinstvoId.ToString());
         }
     }
 }

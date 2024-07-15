@@ -18,7 +18,8 @@ namespace Server.SystemOperation.SORezervacija
 
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.ProveriRezervaciju(rezervacija);
+			List<IEntity> rezs = new List<IEntity>(broker.GetAll(rezervacija));
+			Result = rezervacija.Validate(rezervacija, rezs);
             if (Result) broker.Add(rezervacija);
         }
     }

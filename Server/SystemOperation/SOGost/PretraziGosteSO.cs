@@ -11,7 +11,7 @@ namespace Server.SystemOperation.SOGost
     internal class PretraziGosteSO : SystemOperationBase
     {
         private string upit;
-        public BindingList<User> Result { get; set; } = null;
+        public BindingList<IEntity> Result { get; set; } = null;
 
         public PretraziGosteSO(string upit)
         {
@@ -20,7 +20,8 @@ namespace Server.SystemOperation.SOGost
 
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.PretraziGoste(upit);
+            User user = new User();
+            Result = broker.GetAllWithFilter(user, "(ime", $"'%{upit}%' or prezime like '%{upit}%' or username like '%{upit}%' or ime + ' ' + prezime like '%{upit}%') and uloga = {(int)Role.Gost}");
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Server
         {
             UcitajApartmaneDomacinstvaSO ucitajApartmaneDomacinstvaSO = new UcitajApartmaneDomacinstvaSO(domacinstvo);
             ucitajApartmaneDomacinstvaSO.ExecuteTemplate();
-            return ucitajApartmaneDomacinstvaSO.Result;
+            return ucitajApartmaneDomacinstvaSO.Result.Cast<Apartman>().ToList();
         }
 
         internal IEntity GetEntityById(IEntity argument)
@@ -87,7 +87,7 @@ namespace Server
         {
             LoginSO loginSO = new LoginSO(korisnik);
             loginSO.ExecuteTemplate();
-            return loginSO.Result;
+            return (User)loginSO.Result;
         }
 
         internal object OceniApartman(Ocena ocena)
@@ -108,28 +108,28 @@ namespace Server
         {
             PretraziApartmaneSO pretraziApartmaneSO = new PretraziApartmaneSO(argument);
             pretraziApartmaneSO.ExecuteTemplate();
-            return pretraziApartmaneSO.Result;
+            return pretraziApartmaneSO.Result.Cast<Apartman>().ToList();
         }
 
         internal object PretraziDomacinstva(string argument)
         {
             PretraziDomacinstvaSO pretraziDomacinstvaSO = new PretraziDomacinstvaSO(argument);
             pretraziDomacinstvaSO.ExecuteTemplate();
-            return pretraziDomacinstvaSO.Result;
+            return pretraziDomacinstvaSO.Result.Cast<Domacinstvo>().ToList();
         }
 
         internal object PretraziGoste(string upit)
         {
             PretraziGosteSO pretraziGosteSO = new PretraziGosteSO(upit);
             pretraziGosteSO.ExecuteTemplate();
-            return pretraziGosteSO.Result;
+            return pretraziGosteSO.Result.Cast<User>().ToList();
         }
 
         internal object PretraziRezervacije(string upit)
         {
             PretraziRezervacijeSO pretraziRezervacijeSO = new PretraziRezervacijeSO(upit);
             pretraziRezervacijeSO.ExecuteTemplate();
-            return pretraziRezervacijeSO.Result;
+            return pretraziRezervacijeSO.Result.Cast<Rezervacija>().ToList();
         }
     }
 }

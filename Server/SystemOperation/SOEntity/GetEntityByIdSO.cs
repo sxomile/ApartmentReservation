@@ -15,7 +15,7 @@ namespace Server.SystemOperation.SOEntity
         {
             this.obj = obj;
         }
-
+        //OVO CELO NE SME DA POSTOJI, NADJI MU MESTO I TAMO ZAMENI SA KLASOM KOJOJ PRIPADA
         protected override void ExecuteConcreteOperation()
         {
             Result = broker.GetEntityById(obj);
