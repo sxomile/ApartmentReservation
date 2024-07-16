@@ -182,9 +182,9 @@ namespace Client.GuiController
                 domacinstvo.DomacinstvoId = rezervacija.DomacinstvoID;
                 apartman.ApartmanId = rezervacija.ApartmanID;
                 gost.Id = rezervacija.GostID;
-                rezervacija.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
-                rezervacija.Apartman = (Apartman)Communication.Instance.GetEntityById (apartman);
-                rezervacija.Gost = (User)Communication.Instance.GetEntityById(gost);
+                rezervacija.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
+                rezervacija.Apartman = Communication.Instance.GetApartmanById (apartman);
+                rezervacija.Gost = Communication.Instance.GetGostById(gost);
                 //User korisnik = this.korisnik;
                 MainCoordinator.Instance.ShowUCRezervacija(UCMode.Delete, rezervacija: rezervacija, isAdmin: isAdmin);
             }

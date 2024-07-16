@@ -84,9 +84,21 @@ namespace Server
 
                     break;
 
-                    case Operation.GetEntityById:
+                    case Operation.GetApartmanById:
 
-                        res.Result = Controller.Instance.GetEntityById((IEntity)req.Argument);
+                        res.Result = Controller.Instance.GetApartmanById((IEntity)req.Argument);
+
+                    break;
+
+                    case Operation.GetDomacinstvoById:
+
+                        res.Result = Controller.Instance.GetDomacinstvoById((IEntity)req.Argument);
+
+                    break;
+
+                    case Operation.GetGostById:
+
+                        res.Result = Controller.Instance.GetGostById((IEntity)req.Argument);
 
                     break;
 

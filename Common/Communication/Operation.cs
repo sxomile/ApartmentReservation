@@ -14,7 +14,7 @@ namespace Common.Communication
         PretraziDomacinstva,
         GetAllApartman,
         PretraziApartmane,
-        GetEntityById,
+        GetApartmanById,
         KreirajRezervaciju,
         GetAllGosti,
         PretraziGoste,
@@ -23,6 +23,8 @@ namespace Common.Communication
         Oceni,
         OtkaziRezervaciju,
         GetApartmentsOfDomacinstvo,
-        IzmeniDomacinstvo
-    }
+        IzmeniDomacinstvo,
+		GetDomacinstvoById,
+		GetGostById
+	}
 }

@@ -18,7 +18,7 @@ namespace Server.SystemOperation.SOLogin
 
         protected override void ExecuteConcreteOperation()
         {
-            Result = broker.GetEntityById(korisnik);
+            Result = broker.GetEntityById(korisnik, "login");
         }
     }
 }

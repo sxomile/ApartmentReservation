@@ -2,7 +2,6 @@
 using DBBroker;
 using Server.SystemOperation.SOApartman;
 using Server.SystemOperation.SODomacinstvo;
-using Server.SystemOperation.SOEntity;
 using Server.SystemOperation.SOGost;
 using Server.SystemOperation.SOLogin;
 using Server.SystemOperation.SOOcena;
@@ -62,11 +61,25 @@ namespace Server
             return ucitajApartmaneDomacinstvaSO.Result.Cast<Apartman>().ToList();
         }
 
-        internal IEntity GetEntityById(IEntity argument)
+        internal object GetApartmanById(IEntity argument)
         {
-            GetEntityByIdSO getEntityByIdSO = new GetEntityByIdSO(argument);
-            getEntityByIdSO.ExecuteTemplate();
-            return getEntityByIdSO.Result;
+            GetApartmanByIdSO getApartmanByIdSO = new GetApartmanByIdSO(argument);
+            getApartmanByIdSO.ExecuteTemplate();
+            return getApartmanByIdSO.Result;
+        }
+
+        internal object GetDomacinstvoById(IEntity argument)
+        {
+            GetDomacinstvoByIdSO getDomacinstvoByIdSO = new GetDomacinstvoByIdSO(argument);
+            getDomacinstvoByIdSO.ExecuteTemplate();
+            return getDomacinstvoByIdSO.Result;
+        }
+
+        internal object GetGostById(IEntity argument)
+        {
+            GetGostByIdSO getGostByIdSO = new GetGostByIdSO(argument);
+            getGostByIdSO.ExecuteTemplate();
+            return getGostByIdSO.Result;
         }
 
         internal object IzmeniDomacinstvo(Tuple<Domacinstvo, Domacinstvo> argument)

@@ -142,16 +142,38 @@ namespace Client
             return new BindingList<Apartman>((List<Apartman>)((Response)receiver.Receive()).Result);
         }
 
-        internal IEntity GetEntityById(object obj)
+        internal Apartman GetApartmanById(object apt)
         {
-            Request request = new Request()
-            {
-                Operation = Operation.GetEntityById,
-                Argument = obj
-            };
-            sender.Send(request);
-            return (IEntity)((Response)receiver.Receive()).Result;
-        }
+			Request request = new Request()
+			{
+				Operation = Operation.GetApartmanById,
+				Argument = apt
+			};
+			sender.Send(request);
+			return (Apartman)((Response)receiver.Receive()).Result;
+		}
+
+        internal Domacinstvo GetDomacinstvoById(object dom)
+        {
+			Request request = new Request()
+			{
+				Operation = Operation.GetApartmanById,
+				Argument = dom
+			};
+			sender.Send(request);
+			return (Domacinstvo)((Response)receiver.Receive()).Result;
+		}
+
+        internal User GetGostById(object gost)
+        {
+			Request request = new Request()
+			{
+				Operation = Operation.GetApartmanById,
+				Argument = gost
+			};
+			sender.Send(request);
+			return (User)((Response)receiver.Receive()).Result;
+		}
 
         internal bool KreirajRezervaciju(Rezervacija rezervacija)
         {

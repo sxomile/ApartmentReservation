@@ -84,7 +84,7 @@ namespace Client.GuiController
                 };
                 Domacinstvo domacinstvo = new Domacinstvo();
                 domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
-                apartman.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
+                apartman.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
                 User korisnik = this.korisnik;
                 MainCoordinator.Instance.ShowUCOceni(apartman, korisnik);
             }
@@ -109,7 +109,7 @@ namespace Client.GuiController
                 };
                 Domacinstvo domacinstvo = new Domacinstvo();
                 domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
-                apartman.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
+                apartman.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
                 User korisnik = this.korisnik;
                 MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman,  korisnik);
             }
@@ -135,7 +135,7 @@ namespace Client.GuiController
                 };
                 Domacinstvo domacinstvo = new Domacinstvo();
                 domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
-                apartman.Domacinstvo = (Domacinstvo)Communication.Instance.GetEntityById(domacinstvo);
+                apartman.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
                 //User korisnik = null;
                 MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman, this.korisnik);
             }

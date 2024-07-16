@@ -69,6 +69,7 @@ namespace Common.Domain
                 ((User)entity).Username = reader["Username"].ToString();
                 ((User)entity).Ime = reader["Ime"].ToString();
                 ((User)entity).Prezime = reader["Prezime"].ToString();
+                ((User)entity).Uloga = (Role)reader["Uloga"];
             }
 
             reader.Close();
@@ -80,6 +81,11 @@ namespace Common.Domain
         }
 
 		public bool Validate(IEntity entity)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool Validate(IEntity entity, List<IEntity> entities)
 		{
 			throw new NotImplementedException();
 		}
