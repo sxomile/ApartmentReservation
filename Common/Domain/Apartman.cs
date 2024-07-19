@@ -45,9 +45,9 @@ namespace Common.Domain
             reader.Close();
         }
 
-        BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
+        List<IEntity> IEntity.GetReaderList(SqlDataReader reader)
         {
-            BindingList<IEntity> apartmani = new BindingList<IEntity>();
+            List<IEntity> apartmani = new List<IEntity>();
             while (reader.Read())
             {
                 IEntity apartman = new Apartman()

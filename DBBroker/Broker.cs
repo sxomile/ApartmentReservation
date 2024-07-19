@@ -35,12 +35,12 @@ namespace DBBroker
             cmd.ExecuteNonQuery();
             cmd.Dispose();
         }
-        public BindingList<IEntity> GetAll(IEntity entity)
+        public List<IEntity> GetAll(IEntity entity)
         {
             SqlCommand command = connection.CreateCommand();
             command.CommandText = $"select * from [{entity.TableName}]";
             SqlDataReader reader = command.ExecuteReader();
-            BindingList<IEntity> list = entity.GetReaderList(reader);
+            List<IEntity> list = entity.GetReaderList(reader);
             command.Dispose();
             return list;
         }
@@ -77,13 +77,13 @@ namespace DBBroker
         //da bude jos jednostavnije
         //glupo da se one gluposti pisu u SO, komplikovano bespotrebno
         //lepo za broker msm ali dok neko skonta kako query da formira ima da crkne
-        public BindingList<IEntity> GetAllWithFilter(IEntity entity, string searchProp, string value)
+        public List<IEntity> GetAllWithFilter(IEntity entity, string searchProp, string value)
         {
 
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = $"select * from [{entity.TableName}] where {searchProp} like {value}";
 			SqlDataReader reader = cmd.ExecuteReader();
-			BindingList<IEntity> list = entity.GetReaderList(reader);
+			List<IEntity> list = entity.GetReaderList(reader);
 			cmd.Dispose();
             return list;
 

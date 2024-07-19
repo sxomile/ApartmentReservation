@@ -11,7 +11,7 @@ namespace Server.SystemOperation.SORezervacija
     internal class PretraziRezervacijeSO : SystemOperationBase
     {
         private string upit;
-        public BindingList<IEntity> Result { get; set; } = null;
+        public List<IEntity> Result { get; set; } = null;
         public PretraziRezervacijeSO(string upit)
         {
             this.upit = upit;

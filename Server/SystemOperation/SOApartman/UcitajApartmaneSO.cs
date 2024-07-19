@@ -10,7 +10,7 @@ namespace Server.SystemOperation.SOApartman
 {
     internal class UcitajApartmaneSO : SystemOperationBase
     {
-        public BindingList<IEntity> Result { get; set; } = null;
+        public List<IEntity> Result { get; set; } = null;
         protected override void ExecuteConcreteOperation()
         {
             IEntity apartman = new Apartman();

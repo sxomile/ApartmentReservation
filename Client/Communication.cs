@@ -105,7 +105,7 @@ namespace Client
             };
 
             sender.Send(req);   
-            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
+            return new BindingList<IEntity>((List<IEntity>)((Response)receiver.Receive()).Result);
         }
 
         internal BindingList<Domacinstvo> PretraziDomacinstva(string upit)
@@ -127,7 +127,7 @@ namespace Client
                 Operation = Operation.GetAllApartman
             };
             sender.Send(req);
-            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;   
+            return new BindingList<IEntity>((List<IEntity>)((Response)receiver.Receive()).Result);   
         }
 
         internal BindingList<Apartman> PretraziApartmane(string upit)
@@ -193,7 +193,7 @@ namespace Client
                 Operation = Operation.GetAllGosti,
             };
             sender.Send(req);   
-            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
+            return new BindingList<IEntity>((List<IEntity>)((Response)receiver.Receive()).Result);
         }
 
         internal BindingList<User> PretraziGoste(string upit)
@@ -216,7 +216,7 @@ namespace Client
             };
 
             sender.Send(req);
-            return (BindingList<IEntity>)((Response)receiver.Receive()).Result;
+            return new BindingList<IEntity>((List<IEntity>)((Response)receiver.Receive()).Result);
         }
 
         internal BindingList<Rezervacija> PretraziRezervacije(string upit)

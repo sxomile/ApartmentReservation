@@ -11,7 +11,7 @@ namespace Server.SystemOperation.SOGost
     internal class PretraziGosteSO : SystemOperationBase
     {
         private string upit;
-        public BindingList<IEntity> Result { get; set; } = null;
+        public List<IEntity> Result { get; set; } = null;
 
         public PretraziGosteSO(string upit)
         {

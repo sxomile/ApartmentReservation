@@ -42,9 +42,9 @@ namespace Common.Domain
             reader.Close();
         }
 
-        BindingList<IEntity> IEntity.GetReaderList(SqlDataReader reader)
+        List<IEntity> IEntity.GetReaderList(SqlDataReader reader)
         {
-            BindingList<IEntity> domacinstva = new BindingList<IEntity>();
+            List<IEntity> domacinstva = new List<IEntity>();
             while(reader.Read())
             {
                 IEntity domacinstvo = new Domacinstvo()

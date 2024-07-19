@@ -10,7 +10,7 @@ namespace Server.SystemOperation.SOGost
 {
     internal class UcitajGosteSO : SystemOperationBase
     {
-        public BindingList<IEntity> Result { get; set; } = null;
+        public List<IEntity> Result { get; set; } = null;
 
         protected override void ExecuteConcreteOperation()
         {

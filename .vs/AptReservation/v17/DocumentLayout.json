@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9CF902-445C-4C74-8885-32F3DC9FE97D}|Client\\Client.csproj|c:\\users\\pc\\desktop\\projekat softveri\\aptreservation\\client\\communication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9CF902-445C-4C74-8885-32F3DC9FE97D}|Client\\Client.csproj|solutionrelative:client\\communication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A9CF902-445C-4C74-8885-32F3DC9FE97D}|Client\\Client.csproj|c:\\users\\pc\\desktop\\projekat softveri\\aptreservation\\client\\guicontroller\\domacinstvoguicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A9CF902-445C-4C74-8885-32F3DC9FE97D}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\domacinstvoguicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +27,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Communication.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Client\\Communication.cs",
+              "RelativeDocumentMoniker": "Client\\Communication.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Client\\Communication.cs",
+              "RelativeToolTip": "Client\\Communication.cs",
+              "ViewState": "AQIAALwAAAAAAAAAAAAYwNwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T10:58:35.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DomacinstvoGUIController.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Client\\GuiController\\DomacinstvoGUIController.cs",
+              "RelativeDocumentMoniker": "Client\\GuiController\\DomacinstvoGUIController.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\Projekat softveri\\AptReservation\\Client\\GuiController\\DomacinstvoGUIController.cs",
+              "RelativeToolTip": "Client\\GuiController\\DomacinstvoGUIController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T10:58:09.631Z",
+              "EditorCaption": ""
             }
           ]
         },

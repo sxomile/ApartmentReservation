@@ -34,9 +34,9 @@ namespace Common.Domain
 			}
         }
 
-        public BindingList<IEntity> GetReaderList(SqlDataReader reader)
+        public List<IEntity> GetReaderList(SqlDataReader reader)
         {
-            BindingList<IEntity> users = new BindingList<IEntity>();
+            List<IEntity> users = new List<IEntity>();
             while (reader.Read())
             {
                 IEntity user = new User()

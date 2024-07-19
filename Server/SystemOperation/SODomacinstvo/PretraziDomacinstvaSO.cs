@@ -11,7 +11,7 @@ namespace Server.SystemOperation.SODomacinstvo
     internal class PretraziDomacinstvaSO : SystemOperationBase
     {
         private string upit;
-        public BindingList<IEntity> Result { get; set; } = null;
+        public List<IEntity> Result { get; set; } = null;
         public PretraziDomacinstvaSO(string upit)
         {
             this.upit = upit;

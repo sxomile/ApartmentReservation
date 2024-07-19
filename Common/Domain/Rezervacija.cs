@@ -30,9 +30,9 @@ namespace Common.Domain
             return $"RezervacijaID = '{RezervacijaID}'";
         }
 
-        public BindingList<IEntity> GetReaderList(SqlDataReader reader)
+        public List<IEntity> GetReaderList(SqlDataReader reader)
         {
-            BindingList<IEntity> rezervacije = new BindingList<IEntity>();
+            List<IEntity> rezervacije = new List<IEntity>();
             while (reader.Read())
             {
                 IEntity rezervacija = new Rezervacija()

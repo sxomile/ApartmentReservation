@@ -28,7 +28,7 @@ namespace Common.Domain
             return $"ApartmanId = {ApartmanId}";
         }
 
-        public BindingList<IEntity> GetReaderList(SqlDataReader reader)
+        public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             throw new NotImplementedException();
         }

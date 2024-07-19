@@ -11,7 +11,7 @@ namespace Server.SystemOperation.SOApartman
     internal class UcitajApartmaneDomacinstvaSO : SystemOperationBase
     {
         private Domacinstvo domacinstvo;
-        public BindingList<IEntity> Result { get; set; } = null;
+        public List<IEntity> Result { get; set; } = null;
         public UcitajApartmaneDomacinstvaSO(Domacinstvo domacinstvo)
         {
             this.domacinstvo = domacinstvo;
