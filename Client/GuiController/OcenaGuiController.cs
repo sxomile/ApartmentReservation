@@ -16,12 +16,7 @@ namespace Client.GuiController
         private User korisnik;
         internal Control CreateUCOcena(Apartman apartman, User korisnik)
         {
-            ucOceni = new UCOceni();
-            this.apartman = apartman;
-            this.korisnik = korisnik;
-
-            ucOceni.txtApartman.Text = apartman.Naziv;
-            ucOceni.txtDomacinstvo.Text = apartman.Domacinstvo.Naziv;
+            PrepareFormOcena(apartman, korisnik);
 
             ucOceni.btnOceni.Click += (s, e) =>
                 OceniApartman(apartman, korisnik, ucOceni.comboBox1.SelectedItem?.ToString());
@@ -29,7 +24,17 @@ namespace Client.GuiController
             return ucOceni;
         }
 
-        private void OceniApartman(Apartman apartman, User korisnik, object selectedItem = null)
+		private void PrepareFormOcena(Apartman apartman, User korisnik)
+		{
+			ucOceni = new UCOceni();
+			this.apartman = apartman;
+			this.korisnik = korisnik;
+
+			ucOceni.txtApartman.Text = apartman.Naziv;
+			ucOceni.txtDomacinstvo.Text = apartman.Domacinstvo.Naziv;
+		}
+
+		private void OceniApartman(Apartman apartman, User korisnik, object selectedItem = null)
         {
             if(selectedItem != null && selectedItem.ToString() != string.Empty)
             {

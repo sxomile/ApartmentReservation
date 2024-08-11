@@ -26,7 +26,7 @@ namespace Client.GuiController
 
         public MainCoordinator()
         {
-            //instancirati sve GUI kontrolere osim logina
+            //instancira sve GUI kontrolere osim logina
             domacinstvoGUIController = new DomacinstvoGUIController();
             apartmanGuiController = new ApartmanGuiController();
             rezervacijaGuiController = new RezervacijaGuiController();
@@ -62,9 +62,9 @@ namespace Client.GuiController
             frmMain.ChangePanel(apartmanGuiController.CreateUCApartman(korisnik));
         }
 
-        internal void ShowUCRezervacija(UCMode mode, Apartman apartman = null, User korisnik = null, Rezervacija rezervacija = null, bool isAdmin = false)
+        internal void ShowUCRezervacija(UCMode mode, User korisnik, Apartman apartman = null, Rezervacija rezervacija = null)
         {
-            frmMain.ChangePanel(rezervacijaGuiController.CreateUCRezervacija(mode, apartman, korisnik, rezervacija, isAdmin));
+            frmMain.ChangePanel(rezervacijaGuiController.CreateUCRezervacija(mode, korisnik, apartman, rezervacija));
         }
 
         internal void ShowUCOceni(Apartman apartman, User korisnik)

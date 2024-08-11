@@ -19,16 +19,10 @@ namespace Client.GuiController
         internal Control CreateUCDomacinstvo(UCMode mode, Domacinstvo domacinstvo)
         {
 
+            PrepareFormDomacinstvo(mode, domacinstvo);
+
             if (mode == UCMode.Create)
             {
-                ucDomacinstvo = new UCUpsertDomacinstvo();
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ColumnCount = 1;
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
-
-                foreach (DataGridViewColumn column in ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns)
-                {
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
 
                 ((UCUpsertDomacinstvo)ucDomacinstvo).btnOtkazi.Click += (s, e) =>
                     MainCoordinator.Instance.ShowDefault();
@@ -39,30 +33,6 @@ namespace Client.GuiController
             }
             else if (mode == UCMode.Search)
             {
-                domacinstva.Clear();
-                ucDomacinstvo = new UCPretraziDomacinstvo();
-                BindingList<IEntity> doms = Communication.Instance.GetAllDomacinstvo();
-
-                foreach(IEntity entity in doms)
-                {
-                    Domacinstvo dom = (Domacinstvo)entity;
-                    domacinstva.Add(dom);
-                }
-
-                doms.Clear();
-
-                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.DataSource = domacinstva;
-                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["DomacinstvoId"].Visible = false;
-                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["TableName"].Visible = false;
-                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["Values"].Visible = false;
-
-                ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Dock = DockStyle.Fill;
-
-                foreach (DataGridViewColumn column in ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns)
-                {
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-
                 ((UCPretraziDomacinstvo)ucDomacinstvo).btnPretrazi.Click += (s, e) =>
                     PretraziDomacinstvo(((UCPretraziDomacinstvo)ucDomacinstvo).txtUpit.Text);
 
@@ -71,27 +41,6 @@ namespace Client.GuiController
 
             } else if(mode == UCMode.Update)
             {
-                ucDomacinstvo = new UCUpsertDomacinstvo();
-
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ColumnCount = 3;
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[1].HeaderText = "Prosecna ocena";
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[1].ReadOnly = true;
-                ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[2].Visible = false;
-
-                foreach (Apartman apt in domacinstvo.Apartmani)
-                {
-                    ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Rows.Add(apt.Naziv, apt.ProsecnaOcena, apt.ApartmanId);
-                }
-
-                foreach (DataGridViewColumn column in ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns)
-                {
-                    column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-
-                ((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text = domacinstvo.Naziv;
-
-                ((UCUpsertDomacinstvo)ucDomacinstvo).btnUpsert.Text = "Izmeni domacinstvo";
 
                 ((UCUpsertDomacinstvo)ucDomacinstvo).btnOtkazi.Click += (s, e) =>
                     MainCoordinator.Instance.ShowDefault();
@@ -104,7 +53,76 @@ namespace Client.GuiController
 
         }
 
-        private void IzmeniDomacinstvo(string nazivDomacinstva, DataGridView dgvApartmani, Domacinstvo staroDomacinstvo)
+		private void PrepareFormDomacinstvo(UCMode mode, Domacinstvo domacinstvo)
+		{
+			if (mode == UCMode.Create)
+			{
+				ucDomacinstvo = new UCUpsertDomacinstvo();
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ColumnCount = 1;
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
+
+				foreach (DataGridViewColumn column in ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns)
+				{
+					column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+				}
+
+			}
+			else if (mode == UCMode.Search)
+			{
+				domacinstva.Clear();
+				ucDomacinstvo = new UCPretraziDomacinstvo();
+				BindingList<IEntity> doms = Communication.Instance.GetAllDomacinstvo();
+
+				foreach (IEntity entity in doms)
+				{
+					Domacinstvo dom = (Domacinstvo)entity;
+					domacinstva.Add(dom);
+				}
+
+				doms.Clear();
+
+				((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.DataSource = domacinstva;
+				((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["DomacinstvoId"].Visible = false;
+				((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["TableName"].Visible = false;
+				((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns["Values"].Visible = false;
+
+				((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Dock = DockStyle.Fill;
+
+				foreach (DataGridViewColumn column in ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Columns)
+				{
+					column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+				}
+
+
+			}
+			else if (mode == UCMode.Update)
+			{
+				ucDomacinstvo = new UCUpsertDomacinstvo();
+
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ColumnCount = 3;
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[1].HeaderText = "Prosecna ocena";
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[1].ReadOnly = true;
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[2].Visible = false;
+
+				foreach (Apartman apt in domacinstvo.Apartmani)
+				{
+					((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Rows.Add(apt.Naziv, apt.ProsecnaOcena, apt.ApartmanId);
+				}
+
+				foreach (DataGridViewColumn column in ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns)
+				{
+					column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+				}
+
+				((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text = domacinstvo.Naziv;
+
+				((UCUpsertDomacinstvo)ucDomacinstvo).btnUpsert.Text = "Izmeni domacinstvo";
+
+			}
+		}
+
+		private void IzmeniDomacinstvo(string nazivDomacinstva, DataGridView dgvApartmani, Domacinstvo staroDomacinstvo)
         {
 
             if (((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text == string.Empty)

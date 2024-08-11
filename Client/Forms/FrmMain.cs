@@ -13,47 +13,42 @@ using System.Windows.Forms;
 
 namespace Client.Forms
 {
-    public partial class FrmMain : Form
-    {
-        private readonly User korisnik;
-        public FrmMain(User korisnik)
-        {
-            this.korisnik = korisnik;
-            InitializeComponent();
-            MaximizeBox = false;
+	public partial class FrmMain : Form
+	{
+		private readonly User korisnik;
+		public FrmMain(User korisnik)
+		{
+			this.korisnik = korisnik;
+			InitializeComponent();
+			MaximizeBox = false;
 
-            if(korisnik.Uloga == Role.Gost)
-            {
+			//e ovde sam zasrao sto sam se glupirao nesto
+			//uvek treba proslediti ovog korisnika za rez jer je jako bitno, i onda nema potrebe za onim cudom od hardcode-ovanja
+			//sad zbog ovoga se desavalo ono da mi se korisnik zagubi i onda krene da se gubi nesto program
 
-                domacinstvoToolStripMenuItem.Visible = false;
+			if(korisnik.Uloga == Role.Gost)
+				domacinstvoToolStripMenuItem.Visible = false;
 
-                pretraziRezervacijeToolStripMenuItem.Click += (s, e) =>
-                    MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search, korisnik: korisnik);
+			pretraziRezervacijeToolStripMenuItem.Click += (s, e) =>
+				MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search, korisnik: korisnik);
 
-            }
-            else
-            {
-                pretraziRezervacijeToolStripMenuItem.Click += (s, e) => 
-                    MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search);
-            }
+			kreirajDomacinstvoToolStripMenuItem.Click += (s, e) =>
+				MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Create);
 
-            kreirajDomacinstvoToolStripMenuItem.Click += (s, e) =>
-                MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Create);
+			pretraziDomacinstvaToolStripMenuItem.Click += (s, e) =>
+				MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
 
-            pretraziDomacinstvaToolStripMenuItem.Click += (s, e) =>
-                MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
+			pretraziApartmaneToolStripMenuItem.Click += (s, e) =>
+				MainCoordinator.Instance.ShowApartmanPanel(korisnik);
 
-            pretraziApartmaneToolStripMenuItem.Click += (s, e) =>
-                MainCoordinator.Instance.ShowApartmanPanel(korisnik);
+		}
 
-        }
+		internal void ChangePanel(Control control)
+		{
+			pnlMain.Controls.Clear();
+			pnlMain.Controls.Add(control);
+			control.Dock = DockStyle.Fill;
 
-        internal void ChangePanel(Control control)
-        {
-            pnlMain.Controls.Clear();
-            pnlMain.Controls.Add(control);
-            control.Dock = DockStyle.Fill;
-            
-        }
-    }
+		}
+	}
 }

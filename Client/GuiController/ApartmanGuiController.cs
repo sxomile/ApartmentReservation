@@ -20,35 +20,9 @@ namespace Client.GuiController
         internal Control CreateUCApartman(User korisnik)
         {
             apartmani.Clear();
-            ucPretraziApartman = new ucPretraziApartman();
-            if(korisnik.Uloga == Role.Agent)
-            {
-                ucPretraziApartman.btnOceni.Visible = false;
-            }
-            BindingList<IEntity> apts = Communication.Instance.GetAllApartman();
-            foreach (IEntity entity in apts)
-            {
-                Apartman apt = (Apartman)entity;
-                apartmani.Add(apt);
-            }
-            apts.Clear();
 
-            ucPretraziApartman.dgvApartmani.DataSource = apartmani;
-            ucPretraziApartman.dgvApartmani.Columns["TableName"].Visible = false;
-            ucPretraziApartman.dgvApartmani.Columns["Values"].Visible = false;
-            ucPretraziApartman.dgvApartmani.Columns["ApartmanId"].Visible = false;
-            ucPretraziApartman.dgvApartmani.Columns["Domacinstvo"].Visible = false;
-            ucPretraziApartman.dgvApartmani.Columns["DomacinstvoID"].Visible = false;
+            PrepareFormApartman(korisnik);
 
-
-            foreach (DataGridViewColumn column in ucPretraziApartman.dgvApartmani.Columns)
-            {
-                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-
-            ucPretraziApartman.dgvApartmani.Dock = DockStyle.Fill;
-
-            this.korisnik = korisnik;
             if (korisnik.Uloga == Role.Agent)
             {
                 ucPretraziApartman.btnRezervisi.Click += (s, e) =>
@@ -69,7 +43,40 @@ namespace Client.GuiController
             return ucPretraziApartman;
         }
 
-        private void OceniApartman()
+		private void PrepareFormApartman(User korisnik)
+		{
+			ucPretraziApartman = new ucPretraziApartman();
+			if (korisnik.Uloga == Role.Agent)
+			{
+				ucPretraziApartman.btnOceni.Visible = false;
+			}
+			BindingList<IEntity> apts = Communication.Instance.GetAllApartman();
+			foreach (IEntity entity in apts)
+			{
+				Apartman apt = (Apartman)entity;
+				apartmani.Add(apt);
+			}
+			apts.Clear();
+
+			ucPretraziApartman.dgvApartmani.DataSource = apartmani;
+			ucPretraziApartman.dgvApartmani.Columns["TableName"].Visible = false;
+			ucPretraziApartman.dgvApartmani.Columns["Values"].Visible = false;
+			ucPretraziApartman.dgvApartmani.Columns["ApartmanId"].Visible = false;
+			ucPretraziApartman.dgvApartmani.Columns["Domacinstvo"].Visible = false;
+			ucPretraziApartman.dgvApartmani.Columns["DomacinstvoID"].Visible = false;
+
+
+			foreach (DataGridViewColumn column in ucPretraziApartman.dgvApartmani.Columns)
+			{
+				column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+			}
+
+			ucPretraziApartman.dgvApartmani.Dock = DockStyle.Fill;
+
+			this.korisnik = korisnik;
+		}
+
+		private void OceniApartman()
         {
             var obj = ucPretraziApartman.dgvApartmani.SelectedCells[0].RowIndex;
             DataGridViewRow row = ucPretraziApartman.dgvApartmani.Rows[obj];
@@ -111,7 +118,7 @@ namespace Client.GuiController
                 domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
                 apartman.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
                 User korisnik = this.korisnik;
-                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman,  korisnik);
+                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, korisnik,  apartman);
             }
             else
             {
@@ -136,8 +143,7 @@ namespace Client.GuiController
                 Domacinstvo domacinstvo = new Domacinstvo();
                 domacinstvo.DomacinstvoId = apartman.DomacinstvoId;
                 apartman.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
-                //User korisnik = null;
-                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, apartman, this.korisnik);
+                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Create, korisnik, apartman);
             }
             else
             {
