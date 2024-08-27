@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace Server.SystemOperation.SORezervacija
 {
-    internal class OtkaziRezervacijuSO : SystemOperationBase
+    internal class ZapamtiRezervacijuSO : SystemOperationBase
     {
         private Rezervacija rezervacija;
         public bool Result { get; set; } = false;
-        public OtkaziRezervacijuSO(Rezervacija rezervacija)
+        public ZapamtiRezervacijuSO(Rezervacija rezervacija)
         {
             this.rezervacija = rezervacija;
         }
+
         protected override void ExecuteConcreteOperation()
         {
-            broker.Delete(rezervacija);
-            Result = true;
+			List<IEntity> rezs = new List<IEntity>(broker.GetAll(rezervacija));
+			Result = rezervacija.Validate(rezervacija, rezs);
+            if (Result) broker.Add(rezervacija);
         }
     }
 }

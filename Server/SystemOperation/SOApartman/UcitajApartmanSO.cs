@@ -5,20 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.SystemOperation.SODomacinstvo
+namespace Server.SystemOperation.SOApartman
 {
-	internal class GetDomacinstvoByIdSO : SystemOperationBase
+	internal class UcitajApartmanSO : SystemOperationBase
 	{
 		private IEntity obj;
 		public IEntity Result { get; set; }
-		public GetDomacinstvoByIdSO(IEntity obj)
+		public UcitajApartmanSO(IEntity obj)
 		{
 			this.obj = obj;
 		}
-		
 		protected override void ExecuteConcreteOperation()
 		{
 			Result = broker.GetEntityById(obj);
+			Domacinstvo dom = new Domacinstvo { DomacinstvoId = ((Apartman)obj).DomacinstvoId };
+			((Apartman)obj).Domacinstvo = (Domacinstvo)broker.GetEntityById(dom);
 		}
 	}
 }

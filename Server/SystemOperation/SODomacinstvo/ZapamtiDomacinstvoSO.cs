@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Server.SystemOperation.SODomacinstvo
 {
-    internal class DodajDomacinstvoSO : SystemOperationBase
+    internal class ZapamtiDomacinstvoSO : SystemOperationBase
     {
         private Domacinstvo domacinstvo;
         public bool Result { get; set; } = false;
-        public DodajDomacinstvoSO(Domacinstvo domacinstvo)
+        public ZapamtiDomacinstvoSO(Domacinstvo domacinstvo)
         {
             this.domacinstvo = domacinstvo;
         }

@@ -14,8 +14,19 @@ namespace Server.SystemOperation.SOGost
 
         protected override void ExecuteConcreteOperation()
         {
-            IEntity gost = new User();
-            Result = broker.GetAll(gost);
+            IEntity user = new User();
+            List<IEntity> users = broker.GetAll(user);
+            if(users.Count > 0)
+            {
+                Result = new List<IEntity>();
+				foreach (IEntity korisnik in users)
+				{
+					if (((User)korisnik).Uloga == Role.Gost)
+					{
+						Result.Add(korisnik);
+					}
+				}
+			}
         }
     }
 }

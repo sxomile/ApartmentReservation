@@ -21,7 +21,7 @@ namespace Server
 
         internal object DodajDomacinstvo(Domacinstvo domacinstvo)
         {
-            DodajDomacinstvoSO dodajDomacinstvoSO = new DodajDomacinstvoSO(domacinstvo);
+            ZapamtiDomacinstvoSO dodajDomacinstvoSO = new ZapamtiDomacinstvoSO(domacinstvo);
             dodajDomacinstvoSO.ExecuteTemplate();
             return dodajDomacinstvoSO.Result;
         }
@@ -54,32 +54,25 @@ namespace Server
             return ucitajRezervacijeSO.Result;
         }
 
-        internal object GetApartmentsOfDomacinstvo(Domacinstvo domacinstvo)
-        {
-            UcitajApartmaneDomacinstvaSO ucitajApartmaneDomacinstvaSO = new UcitajApartmaneDomacinstvaSO(domacinstvo);
-            ucitajApartmaneDomacinstvaSO.ExecuteTemplate();
-            return ucitajApartmaneDomacinstvaSO.Result.Cast<Apartman>().ToList();
-        }
-
         internal object GetApartmanById(IEntity argument)
         {
-            GetApartmanByIdSO getApartmanByIdSO = new GetApartmanByIdSO(argument);
+            UcitajApartmanSO getApartmanByIdSO = new UcitajApartmanSO(argument);
             getApartmanByIdSO.ExecuteTemplate();
             return getApartmanByIdSO.Result;
         }
 
         internal object GetDomacinstvoById(IEntity argument)
         {
-            GetDomacinstvoByIdSO getDomacinstvoByIdSO = new GetDomacinstvoByIdSO(argument);
+            UcitajDomacinstvoSO getDomacinstvoByIdSO = new UcitajDomacinstvoSO(argument);
             getDomacinstvoByIdSO.ExecuteTemplate();
             return getDomacinstvoByIdSO.Result;
         }
 
-        internal object GetGostById(IEntity argument)
+		internal object GetRezervacijaById(Rezervacija argument)
         {
-            GetGostByIdSO getGostByIdSO = new GetGostByIdSO(argument);
-            getGostByIdSO.ExecuteTemplate();
-            return getGostByIdSO.Result;
+            UcitajRezervacijuSO ucitajRezervacijuSO = new UcitajRezervacijuSO(argument);
+            ucitajRezervacijuSO.ExecuteTemplate();
+            return ucitajRezervacijuSO.Result;
         }
 
         internal object IzmeniDomacinstvo(Tuple<Domacinstvo, Domacinstvo> argument)
@@ -91,7 +84,7 @@ namespace Server
 
         internal object KreirajRezervaciju(Rezervacija argument)
         {
-            KreirajRezervacijuSO kreirajRezervacijuSO = new KreirajRezervacijuSO(argument);
+            ZapamtiRezervacijuSO kreirajRezervacijuSO = new ZapamtiRezervacijuSO(argument);
             kreirajRezervacijuSO.ExecuteTemplate();
             return kreirajRezervacijuSO.Result;
         }
@@ -112,7 +105,7 @@ namespace Server
 
         internal object OtkaziRezervaciju(Rezervacija rezervacija)
         {
-            OtkaziRezervacijuSO otkaziRezervacijuSO = new OtkaziRezervacijuSO(rezervacija);
+            ObrisiRezervacijuSO otkaziRezervacijuSO = new ObrisiRezervacijuSO(rezervacija);
             otkaziRezervacijuSO.ExecuteTemplate();
             return otkaziRezervacijuSO.Result;
         }
@@ -126,7 +119,7 @@ namespace Server
 
         internal object PretraziDomacinstva(string argument)
         {
-            PretraziDomacinstvaSO pretraziDomacinstvaSO = new PretraziDomacinstvaSO(argument);
+            NadjiDomacinstvaSO pretraziDomacinstvaSO = new NadjiDomacinstvaSO(argument);
             pretraziDomacinstvaSO.ExecuteTemplate();
             return pretraziDomacinstvaSO.Result.Cast<Domacinstvo>().ToList();
         }
@@ -140,7 +133,7 @@ namespace Server
 
         internal object PretraziRezervacije(string upit)
         {
-            PretraziRezervacijeSO pretraziRezervacijeSO = new PretraziRezervacijeSO(upit);
+            NadjiRezervacijeSO pretraziRezervacijeSO = new NadjiRezervacijeSO(upit);
             pretraziRezervacijeSO.ExecuteTemplate();
             return pretraziRezervacijeSO.Result.Cast<Rezervacija>().ToList();
         }

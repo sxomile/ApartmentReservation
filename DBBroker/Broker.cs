@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//svaki ovaj BindingList posle da prepakujem u List
-//kako ovde tako i u sistemskim operacijama
-//nema puno smisla
 
 namespace DBBroker
 {
@@ -72,11 +69,6 @@ namespace DBBroker
         {
             connection.CloseConnection();
         }
-
-        //ova metoda radi posao, ali promeniti posle ovo searchProp i value nekako 
-        //da bude jos jednostavnije
-        //glupo da se one gluposti pisu u SO, komplikovano bespotrebno
-        //lepo za broker msm ali dok neko skonta kako query da formira ima da crkne
         public List<IEntity> GetAllWithFilter(IEntity entity, string searchProp, string value)
         {
 

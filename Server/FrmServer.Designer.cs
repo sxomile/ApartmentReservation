@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmServer));
 			this.btnStart = new System.Windows.Forms.Button();
 			this.btnStop = new System.Windows.Forms.Button();
 			this.txtStatus = new System.Windows.Forms.TextBox();
@@ -72,6 +73,7 @@
 			this.Controls.Add(this.btnStop);
 			this.Controls.Add(this.btnStart);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FrmServer";
 			this.Text = "Server";
 			this.ResumeLayout(false);

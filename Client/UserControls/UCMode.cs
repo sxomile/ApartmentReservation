@@ -8,7 +8,10 @@ namespace Client.UserControls
 {
     public enum UCMode
     {
-        Create, Search, Update,
-        Delete
+        Create, 
+        Search, 
+        Update,
+        Delete,
+        Show
     }
 }

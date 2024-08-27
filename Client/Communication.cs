@@ -157,22 +157,11 @@ namespace Client
         {
 			Request request = new Request()
 			{
-				Operation = Operation.GetApartmanById,
+				Operation = Operation.GetDomacinstvoById,
 				Argument = dom
 			};
 			sender.Send(request);
 			return (Domacinstvo)((Response)receiver.Receive()).Result;
-		}
-
-        internal User GetGostById(object gost)
-        {
-			Request request = new Request()
-			{
-				Operation = Operation.GetApartmanById,
-				Argument = gost
-			};
-			sender.Send(request);
-			return (User)((Response)receiver.Receive()).Result;
 		}
 
         internal bool KreirajRezervaciju(Rezervacija rezervacija)
@@ -256,18 +245,6 @@ namespace Client
             return (bool)((Response)receiver.Receive()).Result;
         }
 
-        internal List<Apartman> GetApartmentsOfDomacinstvo(Domacinstvo domacinstvo)
-        {
-            Request request = new Request()
-            {
-                Operation = Operation.GetApartmentsOfDomacinstvo,
-                Argument = domacinstvo
-            };
-
-            sender.Send(request);
-            return (List<Apartman>)((Response)receiver.Receive()).Result;
-        }
-
         internal bool IzmeniDomacinstvo(Domacinstvo novoDomacinstvo, Domacinstvo staroDomacinstvo)
         {
             Tuple<Domacinstvo, Domacinstvo> domacinstva = new Tuple<Domacinstvo, Domacinstvo>(novoDomacinstvo, staroDomacinstvo);
@@ -280,5 +257,17 @@ namespace Client
             sender.Send(req);
             return (bool)((Response)receiver.Receive()).Result;
         }
-    }
+
+		internal Rezervacija GetRezervacijaById(Rezervacija rezervacija)
+		{
+            Request request = new Request()
+            {
+                Operation = Operation.GetRezervacijaById,
+                Argument = rezervacija
+            };
+
+			sender.Send(request);
+			return (Rezervacija)((Response)receiver.Receive()).Result;
+		}
+	}
 }

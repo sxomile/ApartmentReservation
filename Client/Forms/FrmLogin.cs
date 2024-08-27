@@ -17,6 +17,6 @@ namespace Client.Forms
         {
             InitializeComponent();
             MaximizeBox = false;
-        }
+		}
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Client.GuiController
 {
@@ -57,17 +58,18 @@ namespace Client.GuiController
             frmMain.ChangePanel(ucDefault);
         }
 
-        internal void ShowApartmanPanel(User korisnik)
+        internal void ShowApartmanPanel(User korisnik, UCMode mode)
         {
-            frmMain.ChangePanel(apartmanGuiController.CreateUCApartman(korisnik));
+            frmMain.ChangePanel(apartmanGuiController.CreateUCApartman(korisnik, mode));
         }
 
         internal void ShowUCRezervacija(UCMode mode, User korisnik, Apartman apartman = null, Rezervacija rezervacija = null)
         {
             frmMain.ChangePanel(rezervacijaGuiController.CreateUCRezervacija(mode, korisnik, apartman, rezervacija));
-        }
 
-        internal void ShowUCOceni(Apartman apartman, User korisnik)
+		}
+
+		internal void ShowUCOceni(Apartman apartman, User korisnik)
         {
             frmMain.ChangePanel(ocenaGuiController.CreateUCOcena(apartman, korisnik));
         }

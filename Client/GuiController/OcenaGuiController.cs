@@ -50,14 +50,14 @@ namespace Client.GuiController
                 };
                 if (Communication.Instance.OceniApartman(ocena))
                 {
-                    MessageBox.Show("Ocena uspesno zabelezena!");
+                    MessageBox.Show("Sistem je zapamtio ocenu apartmana!");
                 }
                 else
                 {
                     MessageBox.Show("Apartman vec ocenjen! Moguce je ostaviti samo jednu ocenu!");
                 }
                 
-                MainCoordinator.Instance.ShowApartmanPanel(korisnik);
+                MainCoordinator.Instance.ShowApartmanPanel(korisnik, UserControls.UCMode.Search);
                  
             }
             else

@@ -22,7 +22,6 @@ namespace Client.Forms
 			InitializeComponent();
 			MaximizeBox = false;
 
-			//e ovde sam zasrao sto sam se glupirao nesto
 			//uvek treba proslediti ovog korisnika za rez jer je jako bitno, i onda nema potrebe za onim cudom od hardcode-ovanja
 			//sad zbog ovoga se desavalo ono da mi se korisnik zagubi i onda krene da se gubi nesto program
 
@@ -39,7 +38,7 @@ namespace Client.Forms
 				MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
 
 			pretraziApartmaneToolStripMenuItem.Click += (s, e) =>
-				MainCoordinator.Instance.ShowApartmanPanel(korisnik);
+				MainCoordinator.Instance.ShowApartmanPanel(korisnik, UCMode.Search);
 
 		}
 

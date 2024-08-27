@@ -44,6 +44,8 @@ namespace Client.GuiController
                     PretraziRezervacije(((UCPretraziRezervacije)ucRezervacija).txtPretraziRezervacije.Text);
                 ((UCPretraziRezervacije)ucRezervacija).btnOtkaziRezervaciju.Click += (s, e) =>
                     OtkaziRezervaciju(korisnik);
+                ((UCPretraziRezervacije)ucRezervacija).btnPrikaziDetalje.Click += (s, e) =>
+                    PrikaziDetalje();
 
             } else if(mode == UCMode.Search && korisnik.Uloga == Role.Gost)
             {
@@ -54,16 +56,40 @@ namespace Client.GuiController
                 ((UCPretraziRezervacije)ucRezervacija).btnOtkaziRezervaciju.Click += (s, e) =>
                     OtkaziRezervaciju(korisnik);
 
-            } else if(mode == UCMode.Delete)
+				((UCPretraziRezervacije)ucRezervacija).btnPrikaziDetalje.Click += (s, e) =>
+					PrikaziDetalje();
+
+			} else if(mode == UCMode.Delete)
             {
 
                 ((UCObrisiRezervaciju)ucRezervacija).btnOtkazi.Click += (s, e) =>
                     ObrisiRezervaciju(reservation);
 
+            } else if(mode == UCMode.Show)
+            {
+
             }
 
             return ucRezervacija;
         }
+
+		private void PrikaziDetalje()
+		{
+			var obj = ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.SelectedCells[0].RowIndex;
+			DataGridViewRow row = ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.Rows[obj];
+			if (row.Index != ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.Rows.Count - 1 && row != null)
+			{
+                Rezervacija rezervacija = Communication.Instance.GetRezervacijaById
+                    (new Rezervacija { RezervacijaID = row.Cells["RezervacijaId"].Value.ToString() });
+				
+				MainCoordinator.Instance.ShowUCRezervacija(UCMode.Show, rezervacija: rezervacija, korisnik: korisnik);
+				MessageBox.Show("Sistem je ucitao rezervaciju");
+			}
+			else
+			{
+				MessageBox.Show("Izaberi polje ili red!");
+			}
+		}
 
 		private void PrepareFormRezervacija(UCMode mode, User korisnik, Apartman apartman, Rezervacija reservation)
 		{
@@ -96,10 +122,8 @@ namespace Client.GuiController
 				BindingList<IEntity> gosts = Communication.Instance.GetAllGosti();
 				foreach (IEntity entity in gosts)
 				{
-					//da ucita goste mozda bolje nesto drugo koristiti
-					//tipa da ne proverava ovo nego samo ono addwithstagod da poziva
 					User gost = (User)entity;
-					if (gost.Uloga == Role.Gost) gosti.Add(gost);
+                    gosti.Add(gost);
 				}
 
 				gosts.Clear();
@@ -115,6 +139,7 @@ namespace Client.GuiController
 			else if (mode == UCMode.Search && korisnik.Uloga == Role.Agent)
 			{
 				ucRezervacija = new UCPretraziRezervacije();
+				this.korisnik = korisnik;
 				rezervacije.Clear();
 				((UCPretraziRezervacije)ucRezervacija).label2.Text = "Kreirane rezervacije: ";
 				BindingList<IEntity> rezs = Communication.Instance.UcitajRezervacije();
@@ -160,17 +185,30 @@ namespace Client.GuiController
 			else if (mode == UCMode.Delete)
 			{
 				ucRezervacija = new UCObrisiRezervaciju();
+				this.korisnik = korisnik;
 				((UCObrisiRezervaciju)ucRezervacija).txtApartman.Text = reservation.Apartman.Naziv;
-				((UCObrisiRezervaciju)ucRezervacija).txtDomacinstvo.Text = reservation.Apartman.Naziv;
+				((UCObrisiRezervaciju)ucRezervacija).txtDomacinstvo.Text = reservation.Domacinstvo.Naziv;
 				((UCObrisiRezervaciju)ucRezervacija).txtGost.Text = reservation.Gost.Ime + " " + reservation.Gost.Prezime;
 				((UCObrisiRezervaciju)ucRezervacija).txtDatumDolaska.Text = reservation.DatumOd.ToShortDateString();
 				((UCObrisiRezervaciju)ucRezervacija).txtDatumOdlaska.Text = reservation.DatumDo.ToShortDateString();
 
 			}
+            else if(mode == UCMode.Show)
+            {
+				ucRezervacija = new UCObrisiRezervaciju();
+				this.korisnik = korisnik;
+				((UCObrisiRezervaciju)ucRezervacija).btnOtkazi.Hide();
+				((UCObrisiRezervaciju)ucRezervacija).txtApartman.Text = reservation.Apartman.Naziv;
+				((UCObrisiRezervaciju)ucRezervacija).txtDomacinstvo.Text = reservation.Domacinstvo.Naziv;
+				((UCObrisiRezervaciju)ucRezervacija).txtGost.Text = reservation.Gost.Ime + " " + reservation.Gost.Prezime;
+				((UCObrisiRezervaciju)ucRezervacija).txtDatumDolaska.Text = reservation.DatumOd.ToShortDateString();
+				((UCObrisiRezervaciju)ucRezervacija).txtDatumOdlaska.Text = reservation.DatumDo.ToShortDateString();
+			}
 		}
 
 		private void ObrisiRezervaciju(Rezervacija reservation)
         {
+            //zapravo radi posao
             DialogResult dialogResult = MessageBox.Show("Da li ste sigurni da zelite da otkazete rezervaciju?",
                 "Otkazivanje", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
@@ -178,7 +216,7 @@ namespace Client.GuiController
 
                 if (Communication.Instance.OtkaziRezervaciju(reservation))
                 {
-                    MessageBox.Show("Rezervacija uspesno otkazana!");
+                    MessageBox.Show("Sistem je obrisao rezervaciju!");
                     MainCoordinator.Instance.ShowUCRezervacija(UCMode.Search, korisnik, null, null);
 
                 }
@@ -192,29 +230,15 @@ namespace Client.GuiController
         }
         private void OtkaziRezervaciju(User korisnik)
         {
+            //za otvaranje forme za otkazivanje
             var obj = ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.SelectedCells[0].RowIndex;
             DataGridViewRow row = ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.Rows[obj];
             if (row.Index != ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.Rows.Count - 1 && row != null)
             {
-                Rezervacija rezervacija = new Rezervacija()
-                {
-                    RezervacijaID = row.Cells["RezervacijaId"].Value.ToString(),
-                    ApartmanID = (int)row.Cells["ApartmanID"].Value,
-                    DomacinstvoID = (int)row.Cells["DomacinstvoID"].Value,
-                    GostID = (int)row.Cells["GostID"].Value,
-                    DatumOd = (DateTime)row.Cells["DatumOd"].Value,
-                    DatumDo = (DateTime)row.Cells["DatumDo"].Value,
-                };
-                Domacinstvo domacinstvo = new Domacinstvo();
-                Apartman apartman = new Apartman();
-                User gost = new User();
-                domacinstvo.DomacinstvoId = rezervacija.DomacinstvoID;
-                apartman.ApartmanId = rezervacija.ApartmanID;
-                gost.Id = rezervacija.GostID;
-                rezervacija.Domacinstvo = Communication.Instance.GetDomacinstvoById(domacinstvo);
-                rezervacija.Apartman = Communication.Instance.GetApartmanById (apartman);
-                rezervacija.Gost = Communication.Instance.GetGostById(gost);
-                MainCoordinator.Instance.ShowUCRezervacija(UCMode.Delete, rezervacija: rezervacija, korisnik: korisnik);
+				Rezervacija rezervacija = Communication.Instance.GetRezervacijaById
+					(new Rezervacija { RezervacijaID = row.Cells["RezervacijaId"].Value.ToString() });
+				MainCoordinator.Instance.ShowUCRezervacija(UCMode.Delete, rezervacija: rezervacija, korisnik: korisnik);
+                MessageBox.Show("Sistem je ucitao rezervaciju");
             }
             else
             {
@@ -232,13 +256,29 @@ namespace Client.GuiController
             }
             rezs.Clear();
             ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.DataSource = rezervacije;
+            if(rezervacije.Count() > 0)
+            {
+                MessageBox.Show("Sistem je pronasao rezervacije po zadatoj vrednosti!");
+            }
+            else
+            {
+                MessageBox.Show("Sistem ne moze da nadje rezervacije!");
+            }
         }
         
         private void PretraziRezervacije(string upit)
         {
             rezervacije = Communication.Instance.PretraziRezervacije(upit);
             ((UCPretraziRezervacije)ucRezervacija).dgvRezervacije.DataSource = rezervacije;
-        }
+            if(rezervacije.Count > 0)
+            {
+                MessageBox.Show("Sistem je pronasao rezervacije po zadatoj vrednosti!");
+            }
+            else
+            {
+				MessageBox.Show("Sistem ne moe da nadje rezervacije po zadatoj vrednosti!");
+			}
+		}
 
         private void PretraziGosta(string upit)
         {
@@ -277,7 +317,7 @@ namespace Client.GuiController
                 MessageBox.Show("Mora se rezervisati najmanje 1 dan unapred!");
                 return;
             }
-            
+
             if (datumOdlaska <= datumDolaska)
             {
                 MessageBox.Show("Datum odlaska mora biti veci od datuma dolaska!");
@@ -303,7 +343,8 @@ namespace Client.GuiController
 
             if (rezervisan)
             {
-                MessageBox.Show("Rezervacija uspesno kreirana\n" +
+				MessageBox.Show("Sistem je zapamtio rezervaciju!");
+				MessageBox.Show("Rezervacija uspesno kreirana\n" +
                     $"Apartman: {apartman.Naziv}\nDomacinstvo: {apartman.Domacinstvo.Naziv}\n" +
                     $"Period rezervisanja: {datumDolaska.ToShortDateString()} - {datumOdlaska.ToShortDateString()}\n" +
                     $"Id rezervacije: {rezervacija.RezervacijaID}");
@@ -351,6 +392,7 @@ namespace Client.GuiController
 
             if(slobodan)
             {
+                MessageBox.Show("Sistem je zapamtio rezervaciju!");
                 MessageBox.Show("Rezervacija uspesno kreirana\n" +
                     $"Apartman: {apartman.Naziv}\nDomacinstvo: {apartman.Domacinstvo.Naziv}\n" +
                     $"Period rezervisanja: {datumDolaska.ToShortDateString()} - {datumOdlaska.ToShortDateString()}\n" +

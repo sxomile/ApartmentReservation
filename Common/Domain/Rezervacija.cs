@@ -66,8 +66,17 @@ namespace Common.Domain
 
         public void SetValues(IEntity entity, SqlDataReader reader)
         {
-            throw new NotImplementedException();
-        }
+			if (reader.Read())
+			{
+				((Rezervacija)entity).DatumOd = (DateTime)reader["DatumOd"];
+				((Rezervacija)entity).DatumDo = (DateTime)reader["DatumDo"];
+                ((Rezervacija)entity).ApartmanID = (int)reader["ApartmanId"];
+                ((Rezervacija)entity).DomacinstvoID = (int)reader["DomacinstvoId"];
+                ((Rezervacija)entity).GostID = (int)reader["GostId"];
+                ((Rezervacija)entity).RezervacijaID = reader["RezervacijaId"].ToString();
+			}
+			reader.Close();
+		}
 
 		public bool Validate(IEntity entity, List<IEntity> entities)
 		{

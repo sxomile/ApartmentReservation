@@ -96,12 +96,6 @@ namespace Server
 
                     break;
 
-                    case Operation.GetGostById:
-
-                        res.Result = Controller.Instance.GetGostById((IEntity)req.Argument);
-
-                    break;
-
                     case Operation.KreirajRezervaciju:
 
                         res.Result = Controller.Instance.KreirajRezervaciju((Rezervacija)req.Argument);
@@ -144,15 +138,15 @@ namespace Server
 
                     break;
 
-                    case Operation.GetApartmentsOfDomacinstvo:
-
-                        res.Result = Controller.Instance.GetApartmentsOfDomacinstvo((Domacinstvo)req.Argument);
-
-                    break;
-
                     case Operation.IzmeniDomacinstvo:
 
                         res.Result = Controller.Instance.IzmeniDomacinstvo((Tuple<Domacinstvo, Domacinstvo>)req.Argument);
+
+                    break;
+
+                    case Operation.GetRezervacijaById:
+
+                        res.Result = Controller.Instance.GetRezervacijaById((Rezervacija)req.Argument);
 
                     break;
 

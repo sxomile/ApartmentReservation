@@ -22,9 +22,8 @@ namespace Common.Communication
         PretraziRezervacije,
         Oceni,
         OtkaziRezervaciju,
-        GetApartmentsOfDomacinstvo,
         IzmeniDomacinstvo,
 		GetDomacinstvoById,
-		GetGostById
+		GetRezervacijaById
 	}
 }

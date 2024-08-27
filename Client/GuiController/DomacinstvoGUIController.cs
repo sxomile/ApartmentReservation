@@ -39,19 +39,43 @@ namespace Client.GuiController
                 ((UCPretraziDomacinstvo)ucDomacinstvo).btnIzmeniDomacinstvo.Click += (s, e) =>
                     OdaberiDomacinstvo();
 
+                ((UCPretraziDomacinstvo)ucDomacinstvo).btnPrikaziDetalje.Click += (s, e) =>
+                    PrikaziDetalje();
+
             } else if(mode == UCMode.Update)
             {
-
+                MessageBox.Show("Sistem je ucitao domacinstvo!");
                 ((UCUpsertDomacinstvo)ucDomacinstvo).btnOtkazi.Click += (s, e) =>
                     MainCoordinator.Instance.ShowDefault();
 
                 ((UCUpsertDomacinstvo)ucDomacinstvo).btnUpsert.Click += (s, e) =>
                     IzmeniDomacinstvo(((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text, ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani, domacinstvo);
-            }
+            } else if(mode == UCMode.Show)
+            {
+				MessageBox.Show("Sistem je ucitao domacinstvo!");
 
-            return ucDomacinstvo;
+			}
+
+			return ucDomacinstvo;
 
         }
+
+		private void PrikaziDetalje()
+		{
+			var obj = ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.SelectedCells[0].RowIndex;
+			DataGridViewRow row = ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Rows[obj];
+            if (row.Index != ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Rows.Count - 1 && row != null)
+            {
+                int id = (int)row.Cells["DomacinstvoId"].Value;
+                Domacinstvo dom = Communication.Instance.GetDomacinstvoById(new Domacinstvo { DomacinstvoId = id});
+				MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Show, dom);
+
+			}
+			else
+			{
+				MessageBox.Show("Izaberi polje ili red!");
+			}
+		}
 
 		private void PrepareFormDomacinstvo(UCMode mode, Domacinstvo domacinstvo)
 		{
@@ -119,6 +143,33 @@ namespace Client.GuiController
 
 				((UCUpsertDomacinstvo)ucDomacinstvo).btnUpsert.Text = "Izmeni domacinstvo";
 
+			} 
+            else if(mode == UCMode.Show)
+            {
+                ucDomacinstvo = new UCUpsertDomacinstvo();
+
+                ((UCUpsertDomacinstvo)ucDomacinstvo).btnOtkazi.Hide();
+                ((UCUpsertDomacinstvo)ucDomacinstvo).btnUpsert.Hide();
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ColumnCount = 3;
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[0].HeaderText = "Naziv apartmana";
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[1].HeaderText = "Prosecna ocena";
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[1].ReadOnly = true;
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns[2].Visible = false;
+				((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.ReadOnly = true;
+
+				foreach (Apartman apt in domacinstvo.Apartmani)
+				{
+					((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Rows.Add(apt.Naziv, apt.ProsecnaOcena, apt.ApartmanId);
+				}
+
+				foreach (DataGridViewColumn column in ((UCUpsertDomacinstvo)ucDomacinstvo).dgvApartmani.Columns)
+				{
+					column.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+				}
+
+				((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.Text = domacinstvo.Naziv;
+				((UCUpsertDomacinstvo)ucDomacinstvo).txtNazivDomacinstva.ReadOnly = true;
+
 			}
 		}
 
@@ -185,7 +236,7 @@ namespace Client.GuiController
 
                 if (izmenjeno)
                 {
-                    MessageBox.Show("Domacinstvo je uspesno izmenjeno!");
+                    MessageBox.Show("Sistem je zapamtio domacinstvo!");
                     MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Search);
 
                 }
@@ -203,13 +254,7 @@ namespace Client.GuiController
             DataGridViewRow row = ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Rows[obj];
 			if (row.Index != ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.Rows.Count - 1 && row != null)
 			{
-                Domacinstvo domacinstvo = new Domacinstvo()
-                {
-                    DomacinstvoId = (int)row.Cells["DomacinstvoId"].Value,
-                    Naziv = row.Cells["Naziv"].Value.ToString(),
-                    BrojApartmana = (int)row.Cells["BrojApartmana"].Value
-                };
-                domacinstvo.Apartmani = Communication.Instance.GetApartmentsOfDomacinstvo(domacinstvo);
+                Domacinstvo domacinstvo = Communication.Instance.GetDomacinstvoById(new Domacinstvo { DomacinstvoId = (int)row.Cells["DomacinstvoId"].Value });
 
                 MainCoordinator.Instance.ShowDomacinstvoPanel(UCMode.Update, domacinstvo);
 
@@ -224,7 +269,16 @@ namespace Client.GuiController
         {
             domacinstva = Communication.Instance.PretraziDomacinstva(upit);
             ((UCPretraziDomacinstvo)ucDomacinstvo).dgvDomacinstva.DataSource = domacinstva;
-        }
+            if (domacinstva.Count > 0)
+            {
+				MessageBox.Show("Sistem je nasao domacinstva po zadatoj vrednosti!");
+            }
+            else
+            {
+				MessageBox.Show("Sistem ne moze da nadje domacinstva po zadatoj vrednosti!");
+
+			}
+		}
 
         internal void DodajDomacinstvo(string naziv, DataGridView dgvApartmani)
         {
@@ -238,11 +292,11 @@ namespace Client.GuiController
 
             if(domacinstvo)
             {
-                MessageBox.Show("Domacinstvo je uspesno dodato!");
+                MessageBox.Show("Sistem je zapamtio domacinstvo!");
             }
             else
             {
-                MessageBox.Show("Doslo je do greske! Probaj ponovo!");
+                MessageBox.Show("Sistem ne moze da zapamti domacinstvo!");
             }
 
         }

@@ -28,90 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPretraziApartman));
-            this.txtUpit = new System.Windows.Forms.TextBox();
-            this.btnPretrazi = new System.Windows.Forms.Button();
-            this.dgvApartmani = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRezervisi = new System.Windows.Forms.Button();
-            this.btnOceni = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // txtUpit
-            // 
-            this.txtUpit.Location = new System.Drawing.Point(22, 49);
-            this.txtUpit.Name = "txtUpit";
-            this.txtUpit.Size = new System.Drawing.Size(316, 22);
-            this.txtUpit.TabIndex = 1;
-            // 
-            // btnPretrazi
-            // 
-            this.btnPretrazi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPretrazi.BackgroundImage")));
-            this.btnPretrazi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPretrazi.Location = new System.Drawing.Point(379, 35);
-            this.btnPretrazi.Name = "btnPretrazi";
-            this.btnPretrazi.Size = new System.Drawing.Size(58, 51);
-            this.btnPretrazi.TabIndex = 2;
-            this.btnPretrazi.UseVisualStyleBackColor = true;
-            // 
-            // dgvApartmani
-            // 
-            this.dgvApartmani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvApartmani.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvApartmani.Location = new System.Drawing.Point(0, 0);
-            this.dgvApartmani.MultiSelect = false;
-            this.dgvApartmani.Name = "dgvApartmani";
-            this.dgvApartmani.ReadOnly = true;
-            this.dgvApartmani.RowHeadersWidth = 51;
-            this.dgvApartmani.RowTemplate.Height = 24;
-            this.dgvApartmani.Size = new System.Drawing.Size(415, 283);
-            this.dgvApartmani.TabIndex = 3;
-            this.dgvApartmani.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApartmani_CellContentClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgvApartmani);
-            this.panel1.Location = new System.Drawing.Point(22, 106);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(415, 283);
-            this.panel1.TabIndex = 4;
-            // 
-            // btnRezervisi
-            // 
-            this.btnRezervisi.Location = new System.Drawing.Point(476, 214);
-            this.btnRezervisi.Name = "btnRezervisi";
-            this.btnRezervisi.Size = new System.Drawing.Size(96, 51);
-            this.btnRezervisi.TabIndex = 5;
-            this.btnRezervisi.Text = "Rezervisi apartman";
-            this.btnRezervisi.UseVisualStyleBackColor = true;
-            this.btnRezervisi.Click += new System.EventHandler(this.btnRezervisi_Click);
-            // 
-            // btnOceni
-            // 
-            this.btnOceni.Location = new System.Drawing.Point(476, 300);
-            this.btnOceni.Name = "btnOceni";
-            this.btnOceni.Size = new System.Drawing.Size(96, 51);
-            this.btnOceni.TabIndex = 6;
-            this.btnOceni.Text = "Oceni apartman";
-            this.btnOceni.UseVisualStyleBackColor = true;
-            // 
-            // ucPretraziApartman
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnOceni);
-            this.Controls.Add(this.btnRezervisi);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnPretrazi);
-            this.Controls.Add(this.txtUpit);
-            this.Name = "ucPretraziApartman";
-            this.Size = new System.Drawing.Size(611, 401);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPretraziApartman));
+			this.txtUpit = new System.Windows.Forms.TextBox();
+			this.btnPretrazi = new System.Windows.Forms.Button();
+			this.dgvApartmani = new System.Windows.Forms.DataGridView();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnRezervisi = new System.Windows.Forms.Button();
+			this.btnOceni = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.btnPrikaziDetalje = new System.Windows.Forms.Button();
+			((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).BeginInit();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// txtUpit
+			// 
+			this.txtUpit.Location = new System.Drawing.Point(22, 49);
+			this.txtUpit.Name = "txtUpit";
+			this.txtUpit.Size = new System.Drawing.Size(316, 22);
+			this.txtUpit.TabIndex = 1;
+			// 
+			// btnPretrazi
+			// 
+			this.btnPretrazi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPretrazi.BackgroundImage")));
+			this.btnPretrazi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.btnPretrazi.Location = new System.Drawing.Point(379, 35);
+			this.btnPretrazi.Name = "btnPretrazi";
+			this.btnPretrazi.Size = new System.Drawing.Size(58, 51);
+			this.btnPretrazi.TabIndex = 2;
+			this.btnPretrazi.UseVisualStyleBackColor = true;
+			// 
+			// dgvApartmani
+			// 
+			this.dgvApartmani.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvApartmani.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvApartmani.Location = new System.Drawing.Point(0, 0);
+			this.dgvApartmani.MultiSelect = false;
+			this.dgvApartmani.Name = "dgvApartmani";
+			this.dgvApartmani.ReadOnly = true;
+			this.dgvApartmani.RowHeadersWidth = 51;
+			this.dgvApartmani.RowTemplate.Height = 24;
+			this.dgvApartmani.Size = new System.Drawing.Size(415, 283);
+			this.dgvApartmani.TabIndex = 3;
+			this.dgvApartmani.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvApartmani_CellContentClick);
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.dgvApartmani);
+			this.panel1.Location = new System.Drawing.Point(22, 106);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(415, 283);
+			this.panel1.TabIndex = 4;
+			// 
+			// btnRezervisi
+			// 
+			this.btnRezervisi.Location = new System.Drawing.Point(476, 214);
+			this.btnRezervisi.Name = "btnRezervisi";
+			this.btnRezervisi.Size = new System.Drawing.Size(96, 51);
+			this.btnRezervisi.TabIndex = 5;
+			this.btnRezervisi.Text = "Rezervisi apartman";
+			this.btnRezervisi.UseVisualStyleBackColor = true;
+			this.btnRezervisi.Click += new System.EventHandler(this.btnRezervisi_Click);
+			// 
+			// btnOceni
+			// 
+			this.btnOceni.Location = new System.Drawing.Point(476, 300);
+			this.btnOceni.Name = "btnOceni";
+			this.btnOceni.Size = new System.Drawing.Size(96, 51);
+			this.btnOceni.TabIndex = 6;
+			this.btnOceni.Text = "Oceni apartman";
+			this.btnOceni.UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(19, 30);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(115, 16);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "Pretrazi po nazivu:";
+			// 
+			// btnPrikaziDetalje
+			// 
+			this.btnPrikaziDetalje.Location = new System.Drawing.Point(476, 137);
+			this.btnPrikaziDetalje.Name = "btnPrikaziDetalje";
+			this.btnPrikaziDetalje.Size = new System.Drawing.Size(96, 51);
+			this.btnPrikaziDetalje.TabIndex = 8;
+			this.btnPrikaziDetalje.Text = "Prikazi detalje";
+			this.btnPrikaziDetalje.UseVisualStyleBackColor = true;
+			// 
+			// ucPretraziApartman
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.btnPrikaziDetalje);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.btnOceni);
+			this.Controls.Add(this.btnRezervisi);
+			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.btnPretrazi);
+			this.Controls.Add(this.txtUpit);
+			this.Name = "ucPretraziApartman";
+			this.Size = new System.Drawing.Size(611, 401);
+			((System.ComponentModel.ISupportInitialize)(this.dgvApartmani)).EndInit();
+			this.panel1.ResumeLayout(false);
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
@@ -123,5 +145,7 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnRezervisi;
         public System.Windows.Forms.Button btnOceni;
-    }
+		private System.Windows.Forms.Label label1;
+		public System.Windows.Forms.Button btnPrikaziDetalje;
+	}
 }

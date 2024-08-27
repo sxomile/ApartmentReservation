@@ -34,6 +34,8 @@
 			this.dgvDomacinstva = new System.Windows.Forms.DataGridView();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.btnIzmeniDomacinstvo = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.btnPrikaziDetalje = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDomacinstva)).BeginInit();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
@@ -77,17 +79,37 @@
 			// 
 			// btnIzmeniDomacinstvo
 			// 
-			this.btnIzmeniDomacinstvo.Location = new System.Drawing.Point(455, 193);
+			this.btnIzmeniDomacinstvo.Location = new System.Drawing.Point(455, 225);
 			this.btnIzmeniDomacinstvo.Name = "btnIzmeniDomacinstvo";
 			this.btnIzmeniDomacinstvo.Size = new System.Drawing.Size(111, 67);
 			this.btnIzmeniDomacinstvo.TabIndex = 4;
 			this.btnIzmeniDomacinstvo.Text = "Izmeni domacinstvo";
 			this.btnIzmeniDomacinstvo.UseVisualStyleBackColor = true;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(20, 25);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(115, 16);
+			this.label1.TabIndex = 5;
+			this.label1.Text = "Pretrazi po nazivu:";
+			// 
+			// btnPrikaziDetalje
+			// 
+			this.btnPrikaziDetalje.Location = new System.Drawing.Point(455, 132);
+			this.btnPrikaziDetalje.Name = "btnPrikaziDetalje";
+			this.btnPrikaziDetalje.Size = new System.Drawing.Size(111, 67);
+			this.btnPrikaziDetalje.TabIndex = 6;
+			this.btnPrikaziDetalje.Text = "Prikazi detalje";
+			this.btnPrikaziDetalje.UseVisualStyleBackColor = true;
+			// 
 			// UCPretraziDomacinstvo
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.btnPrikaziDetalje);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btnIzmeniDomacinstvo);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.btnPretrazi);
@@ -108,5 +130,7 @@
         public System.Windows.Forms.DataGridView dgvDomacinstva;
         private System.Windows.Forms.Panel panel1;
 		public System.Windows.Forms.Button btnIzmeniDomacinstvo;
+		private System.Windows.Forms.Label label1;
+		public System.Windows.Forms.Button btnPrikaziDetalje;
 	}
 }
