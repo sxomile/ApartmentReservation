@@ -134,8 +134,17 @@ namespace Client.GuiController
                 Apartman apartman = Communication.Instance.GetApartmanById
                     (new Apartman { ApartmanId = (int)row.Cells["ApartmanID"].Value });
                 User korisnik = this.korisnik;
-                MainCoordinator.Instance.ShowUCOceni(apartman, korisnik);
-                MessageBox.Show("Sistem je ucitao apartman");
+
+				if(Communication.Instance.ValidateOcenjivanje(apartman, korisnik))
+				{
+					MainCoordinator.Instance.ShowUCOceni(apartman, korisnik);
+					MessageBox.Show("Sistem je ucitao apartman");
+				}
+				else
+				{
+					MessageBox.Show("Nije moguce oceniti apartman za koji ne postoji zabelezena rezervacija!");
+				}
+                
             }
             else
             {

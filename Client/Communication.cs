@@ -269,5 +269,28 @@ namespace Client
 			sender.Send(request);
 			return (Rezervacija)((Response)receiver.Receive()).Result;
 		}
+
+		internal bool ValidateOcenjivanje(Apartman apartman, User korisnik)
+		{
+            Ocena ocena = new Ocena()
+            {
+                Apartman = apartman,
+                ApartmanId = apartman.ApartmanId,
+                Domacinstvo = apartman.Domacinstvo,
+                DomacinstvoId = apartman.DomacinstvoId,
+                Gost = korisnik,
+                GostId = korisnik.Id,
+                OcenaApartmana = 0
+            };
+
+            Request request = new Request()
+            {
+                Operation = Operation.ValidateOcenjivanje,
+                Argument = ocena,
+            };
+
+            sender.Send(request);
+            return (bool)((Response)receiver.Receive()).Result;
+		}
 	}
 }

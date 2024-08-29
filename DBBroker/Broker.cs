@@ -23,7 +23,7 @@ namespace DBBroker
         {
             connection.BeginTransaction();
         }
-
+        
         public void Add(IEntity obj)
         {
             SqlCommand cmd = connection.CreateCommand();

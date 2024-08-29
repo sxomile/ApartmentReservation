@@ -98,7 +98,7 @@ namespace Server
 
         internal object OceniApartman(Ocena ocena)
         {
-            OceniApartmanSO oceniApartmanSO = new OceniApartmanSO(ocena);
+            ZapamtiOcenuApartmanaSO oceniApartmanSO = new ZapamtiOcenuApartmanaSO(ocena);
             oceniApartmanSO.ExecuteTemplate();
             return oceniApartmanSO.Result;
         }
@@ -112,7 +112,7 @@ namespace Server
 
         internal object PretraziApartmane(string argument)
         {
-            PretraziApartmaneSO pretraziApartmaneSO = new PretraziApartmaneSO(argument);
+            NadjiApartmaneSO pretraziApartmaneSO = new NadjiApartmaneSO(argument);
             pretraziApartmaneSO.ExecuteTemplate();
             return pretraziApartmaneSO.Result.Cast<Apartman>().ToList();
         }
@@ -137,5 +137,12 @@ namespace Server
             pretraziRezervacijeSO.ExecuteTemplate();
             return pretraziRezervacijeSO.Result.Cast<Rezervacija>().ToList();
         }
-    }
+
+		internal object ValidateOcenjivanje(Ocena argument)
+		{
+            DozvoliOcenjivanjeSO dozvoliOcenjivanjeSO = new DozvoliOcenjivanjeSO(argument);
+            dozvoliOcenjivanjeSO.ExecuteTemplate();
+            return dozvoliOcenjivanjeSO.Result;
+		}
+	}
 }

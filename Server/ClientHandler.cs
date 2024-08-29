@@ -150,6 +150,12 @@ namespace Server
 
                     break;
 
+                    case Operation.ValidateOcenjivanje:
+
+                        res.Result = Controller.Instance.ValidateOcenjivanje((Ocena)req.Argument);
+
+                    break;
+
                 }
             } catch (Exception e)
             {

@@ -24,6 +24,7 @@ namespace Common.Communication
         OtkaziRezervaciju,
         IzmeniDomacinstvo,
 		GetDomacinstvoById,
-		GetRezervacijaById
+		GetRezervacijaById,
+		ValidateOcenjivanje
 	}
 }

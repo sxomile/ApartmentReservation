@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Server.SystemOperation.SOApartman
 {
-    internal class PretraziApartmaneSO : SystemOperationBase
+    internal class NadjiApartmaneSO : SystemOperationBase
     {
         private string upit;
         public List<IEntity> Result { get; set; } = null;
-        public PretraziApartmaneSO(string upit)
+        public NadjiApartmaneSO(string upit)
         {
             this.upit = upit;
         }

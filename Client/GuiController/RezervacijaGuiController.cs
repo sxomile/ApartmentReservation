@@ -351,7 +351,7 @@ namespace Client.GuiController
             }
             else
             {
-                MessageBox.Show("Doslo je do greske");
+                MessageBox.Show("Apartman nije slobodan u odabranim datumima!");
             }
 
         }

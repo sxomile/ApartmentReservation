@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Server.SystemOperation.SOOcena
 {
-    internal class OceniApartmanSO : SystemOperationBase
+    internal class ZapamtiOcenuApartmanaSO : SystemOperationBase
     {
         private Ocena ocena;
         public bool Result { get; set; } = false;
-        public OceniApartmanSO(Ocena ocena)
+        public ZapamtiOcenuApartmanaSO(Ocena ocena)
         {
             this.ocena = ocena;
         }
